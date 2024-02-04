@@ -136,33 +136,31 @@
         </div>
         <!-- Passo 2 -->
         <div v-if="step2">
-          <div class="fadein animation-duration-200">
-            <div class="flex justify-content-center pt-0">
-              <Breadcrumb :home="home" :model="bread">
-                <template #item="{ item }">
-                  <a
-                    v-if="selectedStep == item.action"
-                    @click="Navigate(item)"
-                    class="hover:underline cursor-pointer"
-                  >
-                    <span :class="[item.icon, 'text-color']" />
-                    <span class="text-primary font-semibold"
-                      >{{ item.label }}
-                    </span>
-                  </a>
-                  <a
-                    v-else
-                    @click="Navigate(item)"
-                    class="hover:underline cursor-pointer"
-                  >
-                    <span :class="[item.icon, 'text-color']" />
-                    <span class="text-color font-semibold"
-                      >{{ item.label }}
-                    </span>
-                  </a>
-                </template>
-              </Breadcrumb>
-            </div>
+          <div class="card fadein animation-duration-200">
+            <Breadcrumb :home="home" :model="bread">
+              <template #item="{ item }">
+                <a
+                  v-if="selectedStep == item.action"
+                  @click="Navigate(item)"
+                  class="hover:underline cursor-pointer"
+                >
+                  <span :class="[item.icon, 'text-color']" />
+                  <span class="text-primary font-semibold"
+                    >{{ item.label }}
+                  </span>
+                </a>
+                <a
+                  v-else
+                  @click="Navigate(item)"
+                  class="hover:underline cursor-pointer"
+                >
+                  <span :class="[item.icon, 'text-color']" />
+                  <span class="text-color font-semibold"
+                    >{{ item.label }}
+                  </span>
+                </a>
+              </template>
+            </Breadcrumb>
             <Fieldset>
               <template #legend>
                 <div class="flex align-items-center">
@@ -213,7 +211,6 @@
                         : ""
                     }}
                     {{ slotProps.data.name }}
-                    {{ selectedFields }}
                   </template>
                 </Column>
                 <Column field="connect" class="text-left">
@@ -254,6 +251,30 @@
         <!-- Passo 3 -->
         <div v-if="step3">
           <div class="card fadein animation-duration-200">
+            <Breadcrumb :home="home" :model="bread">
+              <template #item="{ item }">
+                <a
+                  v-if="selectedStep == item.action"
+                  @click="Navigate(item)"
+                  class="hover:underline cursor-pointer"
+                >
+                  <span :class="[item.icon, 'text-color']" />
+                  <span class="text-primary font-semibold"
+                    >{{ item.label }}
+                  </span>
+                </a>
+                <a
+                  v-else
+                  @click="Navigate(item)"
+                  class="hover:underline cursor-pointer"
+                >
+                  <span :class="[item.icon, 'text-color']" />
+                  <span class="text-color font-semibold"
+                    >{{ item.label }}
+                  </span>
+                </a>
+              </template>
+            </Breadcrumb>
             <Fieldset>
               <template #legend>
                 <div class="flex align-items-center">
@@ -362,7 +383,7 @@ export default {
           severity: "warn",
           summary: "Selecione uma plataforma",
           detail:
-            "Uma plataforma e um evento devem ser selecionados para prosseguir",
+            "Uma plataforma e um evento devem ser selecionados para prosseguir.",
           life: 4000,
         });
       } else {
@@ -379,7 +400,7 @@ export default {
         this.$toast.add({
           severity: "warn",
           summary: "Você não selecionou nenhum campo!",
-          detail: "No passo 1, escolha quais campos deseja integrar",
+          detail: "No passo 1, escolha quais campos deseja integrar.",
           life: 4000,
         });
       }
