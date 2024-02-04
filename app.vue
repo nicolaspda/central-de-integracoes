@@ -213,6 +213,7 @@
                         : ""
                     }}
                     {{ slotProps.data.name }}
+                    {{ selectedFields }}
                   </template>
                 </Column>
                 <Column field="connect" class="text-left">
@@ -383,7 +384,11 @@ export default {
         });
       }
       //Testa se os campos foram RELACIONADOS no PASSO 2
-      else {
+      const propriedade = "searchValue";
+      if (!this.selectedFields.every((field) => propriedade in field)) {
+        console.log(this.selectedFields);
+        console.log("Mostra Toast");
+      } else {
         this.step1 = false;
         this.step2 = false;
         this.step3 = true;
