@@ -139,11 +139,24 @@
           <div class="fadein animation-duration-200">
             <div class="flex justify-content-center pt-0">
               <Breadcrumb :home="home" :model="bread">
-                <template #item="{ item, props }">
-                  <a @click="Navigate(item)">
+                <template #item="{ item }">
+                  <a
+                    v-if="selectedStep == item.action"
+                    @click="Navigate(item)"
+                    class="hover:underline cursor-pointer"
+                  >
                     <span :class="[item.icon, 'text-color']" />
-                    <span
-                      class="text-primary font-semibold hover:underline cursor-pointer"
+                    <span class="text-primary font-semibold"
+                      >{{ item.label }}
+                    </span>
+                  </a>
+                  <a
+                    v-else
+                    @click="Navigate(item)"
+                    class="hover:underline cursor-pointer"
+                  >
+                    <span :class="[item.icon, 'text-color']" />
+                    <span class="text-color font-semibold"
                       >{{ item.label }}
                     </span>
                   </a>
@@ -235,6 +248,7 @@
               @click="Step3"
             />
           </div>
+          <Toast></Toast>
         </div>
         <!-- Passo 3 -->
         <div v-if="step3">
@@ -284,6 +298,7 @@ export default {
       ],
       webFields: [],
       searchValue: "",
+      selectedStep: "",
       selectedFields: null,
       selectedPlatform: "",
       selectedEvent: "",
@@ -335,6 +350,8 @@ export default {
     Step1() {
       this.step1 = true;
       this.step2 = false;
+      this.step3 = false;
+      this.selectedStep = "Step1";
     },
     //Manda para o passo 2 quando clica no botão "Criar Integração"
     Step2() {
@@ -350,12 +367,28 @@ export default {
       } else {
         this.step1 = false;
         this.step2 = true;
+        this.step3 = false;
+        this.selectedStep = "Step2";
+        console.log(this.selectedFields);
       }
     },
     Step3() {
-      this.step1 = false;
-      this.step2 = false;
-      this.step3 = true;
+      //Testa se os campos foram SELECIONADOS no PASSO 2
+      if (this.selectedFields == null) {
+        this.$toast.add({
+          severity: "warn",
+          summary: "Você não selecionou nenhum campo!",
+          detail: "No passo 1, escolha quais campos deseja integrar",
+          life: 4000,
+        });
+      }
+      //Testa se os campos foram RELACIONADOS no PASSO 2
+      else {
+        this.step1 = false;
+        this.step2 = false;
+        this.step3 = true;
+        this.selectedStep = "Step3";
+      }
     },
     Navigate(item) {
       if (item.action == "Step1") {
