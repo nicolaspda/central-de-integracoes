@@ -140,12 +140,12 @@
             <div class="flex justify-content-center pt-0">
               <Breadcrumb :home="home" :model="bread">
                 <template #item="{ item, props }">
-                  <a @click="Step1(item)" v-bind="props.action">
+                  <a @click="Navigate(item)">
                     <span :class="[item.icon, 'text-color']" />
                     <span
                       class="text-primary font-semibold hover:underline cursor-pointer"
-                      >{{ item.label }}</span
-                    >
+                      >{{ item.label }}
+                    </span>
                   </a>
                 </template>
               </Breadcrumb>
@@ -356,6 +356,15 @@ export default {
       this.step1 = false;
       this.step2 = false;
       this.step3 = true;
+    },
+    Navigate(item) {
+      if (item.action == "Step1") {
+        this.Step1();
+      } else if (item.action == "Step2") {
+        this.Step2();
+      } else if (item.action == "Step3") {
+        this.Step3();
+      }
     },
     //Faz a busca do autocomplete no passo de escolher os dados do Webhook"
     search(event) {
