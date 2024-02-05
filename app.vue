@@ -304,12 +304,34 @@
                 />
               </div>
             </Fieldset>
+            <Fieldset class="mt-5">
+              <template #legend>
+                <div class="flex align-items-center">
+                  <Avatar shape="circle">4</Avatar>
+                  <span class="font-bold pl-2">Passo</span>
+                </div>
+              </template>
+              <!-- Primeiro componente -->
+              <label for="url">
+                Copie a URL gerada e cole-a na área de Webhooks do sistema
+                terceiro:
+              </label>
+              <div class="flex flex-wrap justify-content-left gap-3 mt-3">
+                <InputGroup>
+                  <InputText id="url" disabled v-model="urlValue" />
+                  <Button
+                    icon="pi pi-copy"
+                    v-tooltip.focus.top="'URL Copiada!'"
+                  />
+                </InputGroup>
+              </div>
+            </Fieldset>
           </div>
           <Toast></Toast>
         </div>
       </Panel>
     </TabPanel>
-    <TabPanel header="Integrações Ativas"> Conteudo </TabPanel>
+    <TabPanel header="Integrações Ativas"> <Active /> </TabPanel>
   </TabView>
   <!-- Segunda Integração - Nativa -->
 </template>
@@ -318,6 +340,7 @@
 export default {
   data() {
     return {
+      urlValue: "",
       validateUrl: true,
       intName: "",
       missing: false,
@@ -434,6 +457,7 @@ export default {
     GenerateURL() {
       if (this.intName != "") {
         this.validateUrl = true;
+        this.urlValue = "https://receiver.webhook.dinamize.com/12345";
         this.$toast.add({
           severity: "success",
           summary: "Sucesso",
