@@ -3,7 +3,7 @@
     <TabPanel header="Quero Integrar ">
       <h3>Através do método:</h3>
       <!-- Primeira Integração - Webhook -->
-      <Panel toggleable>
+      <Panel toggleable collapsed>
         <template #header>
           <div class="flex align-items-center gap-2">
             <Avatar
@@ -229,6 +229,9 @@
                       @complete="search"
                       dropdown
                       placeholder="Campos disponíveis"
+                      :class="{
+                        'p-invalid': missing && !select.data.searchValue,
+                      }"
                     />
                   </template>
                 </Column>
@@ -310,6 +313,7 @@
 export default {
   data() {
     return {
+      missing: false,
       home: {
         icon: "pi pi-home",
         action: "Step1",
@@ -368,7 +372,7 @@ export default {
       this.tempPlatform = [];
       this.tempPlatform.push(this.selectedPlatform);
     },
-    //Manda para o passo 1 quando clica no botão "Voltar"
+    //Manda para o passo 1 quando clica no botão "Home"
     Step1() {
       this.step1 = true;
       this.step2 = false;
@@ -395,7 +399,8 @@ export default {
       }
     },
     Step3() {
-      //Testa se os campos foram SELECIONADOS no PASSO 2
+      //Testa se os campos da Dinamize foram SELECIONADOS no PASSO 2
+      console.log(typeof this.selectedFields);
       if (this.selectedFields == null) {
         this.$toast.add({
           severity: "warn",
@@ -404,18 +409,21 @@ export default {
           life: 4000,
         });
       }
-      //Testa se os campos foram RELACIONADOS no PASSO 2
+      //Testa se os campos terceiros foram RELACIONADOS no PASSO 2
       const propriedade = "searchValue";
       if (!this.selectedFields.every((field) => propriedade in field)) {
         console.log(this.selectedFields);
         console.log("Mostra Toast");
+        this.missing = true;
       } else {
         this.step1 = false;
         this.step2 = false;
         this.step3 = true;
         this.selectedStep = "Step3";
+        this.missing = false;
       }
     },
+    //Navegação do Breadcrumb
     Navigate(item) {
       if (item.action == "Step1") {
         this.Step1();
