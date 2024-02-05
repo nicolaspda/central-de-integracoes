@@ -290,17 +290,22 @@
                 Dê um nome para esta integração:
               </label>
               <div class="flex flex-wrap justify-content-left gap-3 mt-3">
-                <InputText id="webhookName" v-model="valor" class="w-9" />
+                <InputText
+                  id="webhookName"
+                  v-model="intName"
+                  :class="validateUrl ? 'w-9' : 'w-9 p-invalid'"
+                />
                 <Button
                   severity="primary"
                   aria-label="Next"
                   label="Gerar URL"
                   icon="pi pi-chevron-circle-right"
-                  @click="generate"
+                  @click="GenerateURL"
                 />
               </div>
             </Fieldset>
           </div>
+          <Toast></Toast>
         </div>
       </Panel>
     </TabPanel>
@@ -313,6 +318,8 @@
 export default {
   data() {
     return {
+      validateUrl: true,
+      intName: "",
       missing: false,
       home: {
         icon: "pi pi-home",
@@ -421,6 +428,20 @@ export default {
         this.step3 = true;
         this.selectedStep = "Step3";
         this.missing = false;
+      }
+    },
+    //Gerar URL no passo 3
+    GenerateURL() {
+      if (this.intName != "") {
+        this.validateUrl = true;
+        this.$toast.add({
+          severity: "success",
+          summary: "Sucesso",
+          detail: "URL gerada com sucesso!",
+          life: 4000,
+        });
+      } else {
+        this.validateUrl = false;
       }
     },
     //Navegação do Breadcrumb
