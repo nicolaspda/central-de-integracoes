@@ -311,7 +311,7 @@
                   <span class="font-bold pl-2">Passo</span>
                 </div>
               </template>
-              <!-- Primeiro componente -->
+              <!-- Segundo componente -->
               <label for="url">
                 Copie a URL gerada e cole-a na área de Webhooks do sistema
                 terceiro:

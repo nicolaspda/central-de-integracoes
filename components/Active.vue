@@ -5,6 +5,7 @@
       :value="integrations"
       paginator
       :rows="10"
+      rowHover
       dataKey="name"
       filterDisplay="row"
       :loading="loading"
@@ -44,7 +45,10 @@
       <!-- Coluna URL -->
       <Column field="url" header="Webhook URL">
         <template #body="{ data }">
-          <a :href="data.url" target="_blank">{{ data.url }}</a>
+          <InputGroup>
+            <InputText id="url" disabled v-model="data.url" class="w-min" />
+            <Button icon="pi pi-copy" v-tooltip.focus.top="'URL Copiada!'" />
+          </InputGroup>
         </template>
       </Column>
       <!-- Coluna Data -->
@@ -94,7 +98,7 @@ export default {
           url: "https://receiver.webhook.dinamize.com/12347",
           date: "12/01/2024",
           status: false,
-          img: "https://cdn.freebiesupply.com/logos/large/2x/shopify-logo-png-transparent.png",
+          img: "https://freelogopng.com/images/all_img/1655836788shopify-icon-png.png",
         },
         {
           name: "Integração 4",
