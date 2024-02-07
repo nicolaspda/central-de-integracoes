@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  props: { selectedStep: String },
+  props: { valor: String },
   data() {
     return {
       home: {

@@ -33,7 +33,7 @@
   </div>
   <!-- Passo 2 -->
   <div v-if="step2">
-    <BreadNative :selectedStep="selectedStep" /> PASSO 2
+    <BreadNative :valor="selectedStep" /> PASSO 2
     <Button label="IR para 3" @click="Step3" />
   </div>
   <!-- Passo 3 -->
