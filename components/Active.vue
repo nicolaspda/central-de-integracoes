@@ -1,6 +1,7 @@
 <template>
   <div class="card fadein animation-duration-200">
     <DataTable
+      size="large"
       v-model:filters="filters"
       :value="integrations"
       paginator
