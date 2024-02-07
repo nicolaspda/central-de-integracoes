@@ -4,7 +4,7 @@
     <!-- Seleção de plataforma -->
     <div class="card flex justify-content-center">
       <FloatLabel>
-        <InputText id="platforms" v-model="platform" />
+        <InputText id="platforms" v-model="searchPlatform" />
         <label for="platforms">Pesquise sua plataforma</label>
       </FloatLabel>
     </div>
@@ -25,7 +25,7 @@
         </template>
         <template #footer>
           <div class="flex justify-content-center gap-3 mt-1">
-            <Button label="Integrar" class="w-full" @click="Step2" />
+            <Button label="Integrar" class="w-full" @click="Step2(card)" />
           </div>
         </template>
       </Card>
@@ -33,9 +33,62 @@
   </div>
   <!-- Passo 2 -->
   <div v-if="step2">
-    <BreadNative :valor="selectedStep" /> PASSO 2
-    <Button label="IR para 3" @click="Step3" />
+    <div class="card fadein animation-duration-200">
+      <Fieldset>
+        <template #legend>
+          <div class="flex align-items-center">
+            <Avatar :image="selectedPlatform.img" shape="circle"></Avatar>
+            <span class="font-bold pl-2">{{ selectedPlatform.name }}</span>
+          </div>
+        </template>
+        <BreadNative :valor="selectedStep" />
+        <Fieldset class="mt-4">
+          <template #legend>
+            <div class="flex align-items-center">
+              <Avatar shape="circle">1º</Avatar>
+              <span class="font-bold pl-2">Passo</span>
+            </div>
+          </template>
+          <!-- Aqui será necessário futuramente ter o texto variável da config. da plataforma correspondente -->
+          Acesse sua plataforma <strong> {{ selectedPlatform.name }} </strong> e
+          resgate as informações necessárias: <br /><br />
+          <strong> Nome da Loja, Appkey e AppToken.</strong>
+        </Fieldset>
+        <Fieldset class="mt-4">
+          <template #legend>
+            <div class="flex align-items-center">
+              <Avatar shape="circle">2º</Avatar>
+              <span class="font-bold pl-2">Passo</span>
+            </div>
+          </template>
+          Adicione as informações:
+          <!-- Primeiro componente -->
+          <div class="flex flex-column gap-2 mt-4 w-full">
+            <label for="accountname" class="font-bold">Nome da loja: </label>
+            <InputText
+              id="accountname"
+              v-model="accountname"
+              aria-describedby="username-help"
+            />
+            <label for="appkey" class="font-bold">AppKey</label>
+            <InputText
+              id="appkey"
+              v-model="appkey"
+              aria-describedby="username-help"
+            />
+            <label for="apptoken" class="font-bold">AppToken</label>
+            <InputText
+              id="apptoken"
+              v-model="apptoken"
+              aria-describedby="username-help"
+            />
+          </div>
+        </Fieldset>
+        <Button label="IR para 3" @click="Step3" class="mt-4" />
+      </Fieldset>
+    </div>
   </div>
+
   <!-- Passo 3 -->
   <div v-if="step3"><BreadNative /> PASSO 3</div>
 </template>
@@ -44,11 +97,12 @@
 export default {
   data() {
     return {
+      searchPlatform: "",
+      selectedPlatform: null,
       selectedStep: "Step1",
       step1: true,
       step2: false,
       step3: false,
-      platform: "",
       cards: [
         {
           name: "VTEX",
@@ -100,7 +154,7 @@ export default {
   },
   computed: {
     filterCards: function () {
-      const regex = new RegExp(this.platform, "i");
+      const regex = new RegExp(this.searchPlatform, "i");
       return this.cards.filter((card) => regex.test(card.name));
     },
   },
@@ -113,11 +167,12 @@ export default {
       this.selectedStep = "Step1";
     },
     //Manda para o passo 2 quando clica no botão "X"
-    Step2() {
+    Step2(card) {
       this.step1 = false;
       this.step2 = true;
       this.step3 = false;
       this.selectedStep = "Step2";
+      this.selectedPlatform = card;
     },
     //Manda para o passo 3 quando clica no botão "Y"
     Step3() {
