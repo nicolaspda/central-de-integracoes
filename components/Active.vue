@@ -9,7 +9,7 @@
       dataKey="name"
       filterDisplay="row"
       :loading="loading"
-      :globalFilterFields="['name', 'plataform', 'status']"
+      :globalFilterFields="['name', 'plataform', 'status', 'type']"
     >
       <template #header>
         <div class="flex justify-content-end">
@@ -42,13 +42,10 @@
           {{ data.plataform }}
         </template>
       </Column>
-      <!-- Coluna URL -->
-      <Column field="url" header="Webhook URL">
+      <!-- Coluna Tipo -->
+      <Column field="type" header="Tipo" sortable>
         <template #body="{ data }">
-          <InputGroup>
-            <InputText id="url" disabled v-model="data.url" class="w-min" />
-            <Button icon="pi pi-copy" v-tooltip.focus.top="'URL Copiada!'" />
-          </InputGroup>
+          {{ data.type }}
         </template>
       </Column>
       <!-- Coluna Data -->
@@ -63,7 +60,24 @@
       </Column>
       <!-- Coluna Data -->
       <Column field="options" header="Config." style="min-width: 12rem">
-        <template #body="{ data }"> </template>
+        <template #body="{ data }">
+          <SpeedDial
+            v-if="data.type == 'Instantânea'"
+            :model="itemsWeb"
+            showIcon=" pi pi-cog"
+            hideIcon="pi pi-times"
+            direction="right"
+            :style="{ position: 'relative' }"
+          />
+          <SpeedDial
+            v-else
+            :model="items"
+            showIcon=" pi pi-cog"
+            hideIcon="pi pi-times"
+            direction="right"
+            :style="{ position: 'relative', left: '0px', marginleft: '0px' }"
+          />
+        </template>
       </Column>
     </DataTable>
   </div>
@@ -75,11 +89,56 @@ import { FilterMatchMode } from "primevue/api";
 export default {
   data() {
     return {
+      items: [
+        {
+          label: "Edit",
+          icon: "pi pi-pencil",
+        },
+        {
+          label: "Remove",
+          icon: "pi pi-trash",
+          command: () => {
+            this.$toast.add({
+              severity: "success",
+              summary: "Update",
+              detail: "Data Updated",
+            });
+          },
+        },
+      ],
+      itemsWeb: [
+        {
+          label: "Edit",
+          icon: "pi pi-pencil",
+        },
+        {
+          label: "Remove",
+          icon: "pi pi-trash",
+          command: () => {
+            this.$toast.add({
+              severity: "success",
+              summary: "Update",
+              detail: "Data Updated",
+            });
+          },
+        },
+        {
+          label: "Copy",
+          icon: "pi pi-copy",
+          command: () => {
+            this.$toast.add({
+              severity: "success",
+              summary: "Update",
+              detail: "Data Updated",
+            });
+          },
+        },
+      ],
       integrations: [
         {
           name: "Integração 1",
           plataform: "VTEX",
-          url: "https://receiver.webhook.dinamize.com/12345",
+          type: "Instantânea",
           date: "10/01/2024",
           status: true,
           img: "https://albato.com/strapi/uploads/logo_app_vtex_bd66d73eee.png",
@@ -87,7 +146,7 @@ export default {
         {
           name: "Integração 2",
           plataform: "NuvemShop",
-          url: "https://receiver.webhook.dinamize.com/12346",
+          type: "Instantânea",
           date: "11/01/2024",
           status: true,
           img: "https://conectenvios.com.br/wp-content/uploads/2023/03/cropped-nuvemshop_logo.png",
@@ -95,7 +154,7 @@ export default {
         {
           name: "Integração 3",
           plataform: "Shopify",
-          url: "https://receiver.webhook.dinamize.com/12347",
+          type: "Instantânea",
           date: "12/01/2024",
           status: false,
           img: "https://freelogopng.com/images/all_img/1655836788shopify-icon-png.png",
@@ -103,7 +162,7 @@ export default {
         {
           name: "Integração 4",
           plataform: "VNDA",
-          url: "https://receiver.webhook.dinamize.com/12348",
+          type: "Nativa",
           date: "13/01/2024",
           status: false,
           img: "https://plugg.to/wp-content/uploads/2020/07/VNDA-100x100-cópia.png",
@@ -111,7 +170,7 @@ export default {
         {
           name: "Integração 5",
           plataform: "ZohoCRM",
-          url: "https://receiver.webhook.dinamize.com/12349",
+          type: "Instantânea",
           date: "14/01/2024",
           status: false,
           img: "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://crm7.com.br/wp-content/uploads/2023/01/zoho-logo-300x300.png",
