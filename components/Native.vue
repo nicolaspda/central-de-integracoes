@@ -17,7 +17,7 @@
       <template #subtitle>{{ card.subtitle }}</template>
       <template #content="conteudo">
         <div class="flex justify-content-center">
-          <img :src="card.img" :alt="card.name" />
+          <img :src="card.img" :alt="card.name" class="border-round h-5rem" />
         </div>
       </template>
       <template #footer>
