@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   css: [
     "primeflex/primeflex.css",
-    "primevue/resources/themes/aura-light-blue/theme.css",
+    "primevue/resources/themes/aura-light-indigo/theme.css",
     "primeicons/primeicons.css",
     "~/assets/globalStyle.css",
   ],

@@ -59,7 +59,7 @@
           <InputSwitch v-model="data.status" />
         </template>
       </Column>
-      <!-- Coluna Data -->
+      <!-- Coluna Configurações -->
       <Column field="options" header="Config." style="min-width: 12rem">
         <template #body="{ data }">
           <SpeedDial
