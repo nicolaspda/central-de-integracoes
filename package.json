@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "nuxt": "^3.10.1",
-    "nuxt-primevue": "^0.2.2",
+    "nuxt-primevue": "^0.3.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

@@ -1,4 +1,5 @@
 <template>
+  <Menu />
   <div class="card">
     <!-- Título -->
     <h2>Minhas Jornadas</h2>

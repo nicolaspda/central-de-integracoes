@@ -1,4 +1,5 @@
 <template>
+  <Menu />
   <TabView>
     <TabPanel header="Quero Integrar ">
       <h3>Através do método:</h3>
