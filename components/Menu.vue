@@ -11,7 +11,9 @@
         </div>
       </template>
       <template #item="{ item, props, hasSubmenu, root }">
-        <a v-ripple class="flex align-items-center" v-bind="props.action">
+        <!--Tem um V-IF aqui no <NuxtLink> que checa se existe rota. Eu tirei. Avaliar impacto v-if="item.route" -->
+        <NuxtLink v-slot="{ href, navigate }" :to="item.route" custom>
+        <a v-ripple class="flex align-items-center" v-bind="props.action" @click="navigate" :href="href">
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
           <Badge
@@ -22,8 +24,8 @@
           <span
             v-if="item.shortcut"
             class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-            >{{ item.shortcut }}</span
-          >
+            >{{ item.shortcut }}
+           </span>
           <i
             v-if="hasSubmenu"
             :class="[
@@ -32,6 +34,7 @@
             ]"
           ></i>
         </a>
+       </NuxtLink>
       </template>
       <template #end>
         <div class="flex align-items-center gap-2">
@@ -53,6 +56,7 @@ export default {
         {
           label: "Dashboard",
           icon: "pi pi-home",
+          route: '/'
         },
         {
           label: "Criar",
@@ -216,6 +220,7 @@ export default {
         {
           label: "Integrar",
           icon: "pi pi-sync",
+          route: '/Central'
         },
         {
           label: "Configurar",
@@ -254,11 +259,13 @@ export default {
               label: "Começando na plataforma",
               icon: "pi pi-car",
               badge: 2,
+              route: '/Journey'
             },
             {
               label: "Criando jornada do cliente",
               icon: "pi pi-truck",
               badge: 3,
+              route: '/Journey'
             },
           ],
         },
