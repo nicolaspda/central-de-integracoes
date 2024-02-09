@@ -277,13 +277,14 @@
         </template>
         <!-- Segundo componente -->
         <label for="url">
-          Copie a URL gerada e cole-a na área de Webhooks do sistema terceiro:
+          Copie a URL gerada, acesse o sistema terceiro e cole-a na área de<i> Webhooks </i> dedicada. Depois, adicione esta integração:
         </label>
-        <div class="flex flex-wrap justify-content-left gap-3 mt-3">
-          <InputGroup>
+        <div class="flex flex-wrap justify-content-left gap-3 mt-3 ">
+          <InputGroup class="w-9">
             <InputText id="url" disabled v-model="urlValue" />
-            <Button icon="pi pi-copy" v-tooltip.focus.top="'URL Copiada!'" />
+            <Button icon="pi pi-copy" v-tooltip.focus.top="'URL Copiada!'" :disabled="enableButtons"  />
           </InputGroup>
+          <Button label="Adicionar às Interações" :disabled="enableButtons" icon="pi pi-plus-circle" />
         </div>
       </Fieldset>
     </div>
@@ -296,6 +297,7 @@ export default {
   data() {
     return {
       urlValue: "",
+      enableButtons: true,
       validateUrl: true,
       intName: "",
       missing: false,
@@ -412,6 +414,7 @@ export default {
     GenerateURL() {
       if (this.intName != "") {
         this.validateUrl = true;
+        this.enableButtons = false;
         this.urlValue = "https://receiver.webhook.dinamize.com/12345";
         this.$toast.add({
           severity: "success",
