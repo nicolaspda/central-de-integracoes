@@ -112,9 +112,6 @@ export default {
               route: "/Journey",
             },
             {
-              separator: true,
-            },
-            {
               label: "Templates",
               icon: "pi pi-palette",
               items: [
@@ -131,6 +128,9 @@ export default {
                   route: "/Journey",
                 },
               ],
+            },
+            {
+              separator: true,
             },
           ],
         },
@@ -170,24 +170,6 @@ export default {
             },
             {
               separator: true,
-            },
-            {
-              label: "Templates",
-              icon: "pi pi-palette",
-              items: [
-                {
-                  label: "E-mail",
-                  icon: "pi pi-palette",
-                  badge: 2,
-                  route: "/Journey",
-                },
-                {
-                  label: "Landing page",
-                  icon: "pi pi-palette",
-                  badge: 3,
-                  route: "/Journey",
-                },
-              ],
             },
           ],
         },
@@ -231,24 +213,6 @@ export default {
             },
             {
               separator: true,
-            },
-            {
-              label: "Templates",
-              icon: "pi pi-palette",
-              items: [
-                {
-                  label: "E-mail",
-                  icon: "pi pi-palette",
-                  badge: 2,
-                  route: "/Journey",
-                },
-                {
-                  label: "Landing page",
-                  icon: "pi pi-palette",
-                  badge: 3,
-                  route: "/Journey",
-                },
-              ],
             },
           ],
         },

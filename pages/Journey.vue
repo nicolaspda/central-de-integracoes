@@ -2,7 +2,10 @@
   <Menu />
   <div class="card">
     <!-- Título -->
-    <h2>Minhas Jornadas</h2>
+    <h2>
+      <i class="pi pi-car">&nbsp;</i><span class="text-primary">Minhas</span>
+      Jornadas
+    </h2>
     <p>
       Encontre aqui toda a informação necessária para começar a utilizar a
       plataforma da Dinamize e então trabalhar a jornada de seus contatos.
