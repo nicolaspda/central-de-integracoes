@@ -134,7 +134,7 @@
       <Fieldset>
         <template #legend>
           <div class="flex align-items-center">
-            <Avatar shape="circle">1</Avatar>
+            <Avatar shape="circle">1º</Avatar>
             <span class="font-bold pl-2">Passo</span>
           </div>
         </template>
@@ -156,7 +156,7 @@
       <Fieldset class="mt-5">
         <template #legend>
           <div class="flex align-items-center">
-            <Avatar shape="circle">2</Avatar>
+            <Avatar shape="circle">2º</Avatar>
             <span class="font-bold pl-2">Passo</span>
           </div>
         </template>
@@ -277,14 +277,25 @@
         </template>
         <!-- Segundo componente -->
         <label for="url">
-          Copie a URL gerada, acesse o sistema terceiro e cole-a na área de<i> Webhooks </i> dedicada. Depois, adicione esta integração:
+          Copie a URL gerada, acesse o sistema terceiro e cole-a na área de<i>
+            Webhooks
+          </i>
+          dedicada. Depois, adicione esta integração:
         </label>
-        <div class="flex flex-wrap justify-content-left gap-3 mt-3 ">
+        <div class="flex flex-wrap justify-content-left gap-3 mt-3">
           <InputGroup class="w-9">
             <InputText id="url" disabled v-model="urlValue" />
-            <Button icon="pi pi-copy" v-tooltip.focus.top="'URL Copiada!'" :disabled="enableButtons"  />
+            <Button
+              icon="pi pi-copy"
+              v-tooltip.focus.top="'URL Copiada!'"
+              :disabled="enableButtons"
+            />
           </InputGroup>
-          <Button label="Adicionar às Interações" :disabled="enableButtons" icon="pi pi-plus-circle" />
+          <Button
+            label="Adicionar às Interações"
+            :disabled="enableButtons"
+            icon="pi pi-plus-circle"
+          />
         </div>
       </Fieldset>
     </div>
@@ -457,4 +468,13 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+/*Multiselect Deep para responsividade mobile*/
+:deep(.p-multiselect-token) {
+  margin: 0.1rem;
+}
+:deep(.p-multiselect-label) {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
