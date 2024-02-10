@@ -11,21 +11,42 @@
         </div>
       </template>
       <template #item="{ item, props, hasSubmenu, root }">
-        <!--Tem um V-IF aqui no <NuxtLink> que checa se existe rota. Eu tirei. Avaliar impacto v-if="item.route" -->
-        <NuxtLink v-slot="{ href, navigate }" :to="item.route" custom>
-        <a v-ripple class="flex align-items-center" v-bind="props.action" @click="navigate" :href="href">
+        <NuxtLink
+          v-if="item.route"
+          v-slot="{ href, navigate }"
+          :to="item.route"
+          custom
+        >
+          <a
+            v-ripple
+            class="flex align-items-center"
+            v-bind="props.action"
+            @click="navigate"
+            :href="href"
+          >
+            <span :class="item.icon" />
+            <span class="ml-2">{{ item.label }}</span>
+            <Badge
+              v-if="item.badge"
+              :class="{ 'ml-auto': !root, 'ml-2': root }"
+              :value="item.badge"
+            />
+            <span
+              v-if="item.shortcut"
+              class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
+              >{{ item.shortcut }}
+            </span>
+          </a>
+        </NuxtLink>
+        <a
+          v-else
+          v-ripple
+          :href="item.url"
+          :target="item.target"
+          v-bind="props.action"
+        >
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
-          <Badge
-            v-if="item.badge"
-            :class="{ 'ml-auto': !root, 'ml-2': root }"
-            :value="item.badge"
-          />
-          <span
-            v-if="item.shortcut"
-            class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-            >{{ item.shortcut }}
-           </span>
           <i
             v-if="hasSubmenu"
             :class="[
@@ -34,7 +55,6 @@
             ]"
           ></i>
         </a>
-       </NuxtLink>
       </template>
       <template #end>
         <div class="flex align-items-center gap-2">
@@ -56,7 +76,7 @@ export default {
         {
           label: "Dashboard",
           icon: "pi pi-home",
-          route: '/'
+          route: "/",
         },
         {
           label: "Criar",
@@ -66,31 +86,37 @@ export default {
               label: "E-mail",
               icon: "pi pi-send",
               shortcut: "⌘+S",
+              route: "/Journey",
             },
             {
               label: "Landing page",
               icon: "pi pi-desktop",
               shortcut: "⌘+B",
+              route: "/Journey",
             },
             {
               label: "Pop-up",
               icon: "pi pi-id-card",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "WhatsApp",
               icon: "pi pi-whatsapp",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "SMS",
               icon: "pi pi-mobile",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "Campanhas",
               icon: "pi pi-megaphone",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               separator: true,
@@ -103,11 +129,13 @@ export default {
                   label: "E-mail",
                   icon: "pi pi-palette",
                   badge: 2,
+                  route: "/Journey",
                 },
                 {
                   label: "Landing page",
                   icon: "pi pi-palette",
                   badge: 3,
+                  route: "/Journey",
                 },
               ],
             },
@@ -121,26 +149,31 @@ export default {
               label: "Contatos",
               icon: "pi pi-users",
               shortcut: "⌘+S",
+              route: "/Journey",
             },
             {
               label: "Tags",
               icon: "pi pi-tags",
               shortcut: "⌘+B",
+              route: "/Journey",
             },
             {
               label: "Filtros",
               icon: "pi pi-filter",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "Lead Score",
               icon: "pi pi-sort-numeric-up-alt",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "Galeria de imagens",
               icon: "pi pi-image",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               separator: true,
@@ -153,11 +186,13 @@ export default {
                   label: "E-mail",
                   icon: "pi pi-palette",
                   badge: 2,
+                  route: "/Journey",
                 },
                 {
                   label: "Landing page",
                   icon: "pi pi-palette",
                   badge: 3,
+                  route: "/Journey",
                 },
               ],
             },
@@ -175,26 +210,31 @@ export default {
               label: "Envios",
               icon: "pi pi-send",
               shortcut: "⌘+S",
+              route: "/Journey",
             },
             {
               label: "Analytics",
               icon: "pi pi-chart-bar",
               shortcut: "⌘+B",
+              route: "/Journey",
             },
             {
               label: "Landing pages",
               icon: "pi pi-desktop",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "SMS",
               icon: "pi pi-mobile",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "SEO",
               icon: "pi pi-google",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               separator: true,
@@ -207,11 +247,13 @@ export default {
                   label: "E-mail",
                   icon: "pi pi-palette",
                   badge: 2,
+                  route: "/Journey",
                 },
                 {
                   label: "Landing page",
                   icon: "pi pi-palette",
                   badge: 3,
+                  route: "/Journey",
                 },
               ],
             },
@@ -220,7 +262,7 @@ export default {
         {
           label: "Integrar",
           icon: "pi pi-sync",
-          route: '/Central'
+          route: "/Central",
         },
         {
           label: "Configurar",
@@ -230,21 +272,25 @@ export default {
               label: "Domínios",
               icon: "pi pi-globe",
               shortcut: "⌘+S",
+              route: "/Journey",
             },
             {
               label: "Analytics",
               icon: "pi pi-chart-bar",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               label: "URL amigável",
               icon: "pi pi-verified",
               shortcut: "⌘+B",
+              route: "/Journey",
             },
             {
               label: "Script da Dinamize",
               icon: "pi pi-code",
               shortcut: "⌘+U",
+              route: "/Journey",
             },
             {
               separator: true,
@@ -259,13 +305,13 @@ export default {
               label: "Começando na plataforma",
               icon: "pi pi-car",
               badge: 2,
-              route: '/Journey'
+              route: "/Journey",
             },
             {
               label: "Criando jornada do cliente",
               icon: "pi pi-truck",
               badge: 3,
-              route: '/Journey'
+              route: "/Journey",
             },
           ],
         },
