@@ -13,7 +13,7 @@
       <template #item="{ item, props, hasSubmenu, root }">
         <NuxtLink
           v-if="item.route"
-          v-slot="{ href, navigate }"
+          v-slot="{ navigate }"
           :to="item.route"
           custom
         >
@@ -22,7 +22,6 @@
             class="flex align-items-center"
             v-bind="props.action"
             @click="navigate"
-            :href="href"
           >
             <span :class="item.icon" />
             <span class="ml-2">{{ item.label }}</span>
@@ -38,13 +37,7 @@
             </span>
           </a>
         </NuxtLink>
-        <a
-          v-else
-          v-ripple
-          :href="item.url"
-          :target="item.target"
-          v-bind="props.action"
-        >
+        <a v-else v-ripple :target="item.target" v-bind="props.action">
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
           <i
