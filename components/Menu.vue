@@ -118,13 +118,11 @@ export default {
                 {
                   label: "E-mail",
                   icon: "pi pi-palette",
-                  badge: 2,
                   route: "/Journey",
                 },
                 {
                   label: "Landing page",
                   icon: "pi pi-palette",
-                  badge: 3,
                   route: "/Journey",
                 },
               ],
