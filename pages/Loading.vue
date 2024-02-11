@@ -1,5 +1,5 @@
 <template>
-  <div class="flex align-items-center justify-content-center h-3">
+  <div class="card flex align-items-center justify-content-center h-screen">
     <img
       src="https://i.postimg.cc/DyWW65wL/dina-logo.png"
       width="200"
@@ -7,7 +7,11 @@
     />
   </div>
   <div class="w-12rem mt-3">
-    <ProgressBar :value="loading" style="height: 7px"></ProgressBar>
+    <ProgressBar
+      :value="loading"
+      :showValue="false"
+      style="height: 7px"
+    ></ProgressBar>
   </div>
 </template>
 
@@ -37,7 +41,7 @@ export default {
           this.endProgress();
         }
         this.loading = newValue;
-      }, 900);
+      }, 1400);
     },
     endProgress() {
       clearInterval(this.interval);
@@ -48,10 +52,10 @@ export default {
     logoClass() {
       return this.loading < 100
         ? "flex mr-6 pb-3 mb-2 fadein animation-duration-2000 animation-iteration-infinite"
-        : "flex mr-6 pb-3 mb-2";
+        : "flex mr-6 pb-3 mb-2 w-11rem transition-all transition-duration-200 transition-delay-500";
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

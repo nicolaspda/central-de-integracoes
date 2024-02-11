@@ -69,7 +69,7 @@ export default {
         {
           label: "Dashboard",
           icon: "pi pi-home",
-          route: "/",
+          route: "/Dash",
         },
         {
           label: "Criar",
