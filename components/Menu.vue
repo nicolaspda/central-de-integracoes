@@ -79,7 +79,7 @@ export default {
               label: "E-mail",
               icon: "pi pi-send",
               shortcut: "⌘+S",
-              route: "/Journey",
+              route: "/E-mail",
             },
             {
               label: "Landing page",
