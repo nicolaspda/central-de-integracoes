@@ -10,25 +10,31 @@
     </div>
     <!-- Cards -->
     <div class="flex justify-content-center gap-3 flex-wrap">
-      <Card
-        v-for="(card, key) in filterCards"
-        :key="key"
-        style="width: 18rem; overflow: hidden; transition: all 0.5s ease"
-        class="shadow-1 hover:shadow-4"
-      >
-        <template #title> {{ card.name }}</template>
-        <template #subtitle>{{ card.subtitle }}</template>
-        <template #content="conteudo">
-          <div class="flex justify-content-center">
-            <img :src="card.img" :alt="card.name" class="border-round h-5rem" />
-          </div>
-        </template>
-        <template #footer>
-          <div class="flex justify-content-center gap-3 mt-1">
-            <Button label="Integrar" class="w-full" @click="Step2(card)" />
-          </div>
-        </template>
-      </Card>
+      <transition-group name="fade">
+        <Card
+          v-for="(card, key) in filterCards"
+          :key="key"
+          style="width: 18rem; overflow: hidden; transition: all 0.5s ease"
+          class="shadow-1 hover:shadow-4"
+        >
+          <template #title> {{ card.name }}</template>
+          <template #subtitle>{{ card.subtitle }}</template>
+          <template #content="conteudo">
+            <div class="flex justify-content-center">
+              <img
+                :src="card.img"
+                :alt="card.name"
+                class="border-round h-5rem"
+              />
+            </div>
+          </template>
+          <template #footer>
+            <div class="flex justify-content-center gap-3 mt-1">
+              <Button label="Integrar" class="w-full" @click="Step2(card)" />
+            </div>
+          </template>
+        </Card>
+      </transition-group>
     </div>
   </div>
   <!-- Passo 2 -->
@@ -183,3 +189,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
