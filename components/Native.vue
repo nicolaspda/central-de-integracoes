@@ -88,7 +88,6 @@
       </Fieldset>
     </div>
   </div>
-
   <!-- Passo 3 -->
   <div v-if="step3"><BreadNative /> PASSO 3</div>
 </template>
