@@ -54,7 +54,7 @@
         {{ data.date }}
       </Column>
       <!-- Coluna Status -->
-      <Column field="status" header="Status" sortable style="min-width: 12rem">
+      <Column field="status" header="Status" style="min-width: 12rem">
         <template #body="{ data }">
           <InputSwitch v-model="data.status" />
         </template>

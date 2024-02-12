@@ -31,13 +31,152 @@
       </template>
     </Card>
   </div>
-  <div v-if="pontualStep" class="">OLÁ</div>
+  <div
+    v-if="pontualStep"
+    class="card border-1 border-200 fadein animation-duration-200"
+  >
+    <div class="card">
+      <div class="title mb-3 w-max">
+        <Inplace :closable="true" class="text-2xl">
+          <template #display>
+            {{ text || "Nome do envio" }}
+          </template>
+          <template #content>
+            <InputText v-model="text" />
+          </template>
+          <template #closeicon>
+            <i class="pi pi-check"></i>
+          </template>
+        </Inplace>
+      </div>
+      <Accordion
+        :activeIndex="0"
+        expandIcon="pi pi-plus"
+        collapseIcon="pi pi-minus"
+      >
+        <!--Público-->
+        <AccordionTab>
+          <template #header>
+            <span class="flex align-items-center gap-2 w-full">
+              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-check"
+                shape="circle"
+                class="ml-auto mr-2 bg-green-600 text-white"
+              ></Avatar>
+            </span>
+          </template>
+          <p class="m-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </AccordionTab>
+        <!--Remetente-->
+        <AccordionTab>
+          <template #header>
+            <span class="flex align-items-center gap-2 w-full">
+              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-check"
+                shape="circle"
+                class="ml-auto mr-2 bg-green-600 text-white"
+              ></Avatar>
+            </span>
+          </template>
+          <p class="m-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </AccordionTab>
+        <!--Público-->
+        <AccordionTab>
+          <template #header>
+            <span class="flex align-items-center gap-2 w-full">
+              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-check"
+                shape="circle"
+                class="ml-auto mr-2 bg-green-600 text-white"
+              ></Avatar>
+            </span>
+          </template>
+          <p class="m-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </AccordionTab>
+        <AccordionTab>
+          <template #header>
+            <span class="flex align-items-center gap-2 w-full">
+              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-check"
+                shape="circle"
+                class="ml-auto mr-2 bg-green-600 text-white"
+              ></Avatar>
+            </span>
+          </template>
+          <p class="m-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </AccordionTab>
+        <AccordionTab>
+          <template #header>
+            <span class="flex align-items-center gap-2 w-full">
+              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-check"
+                shape="circle"
+                class="ml-auto mr-2 bg-green-600 text-white"
+              ></Avatar>
+            </span>
+          </template>
+          <p class="m-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </AccordionTab>
+      </Accordion>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      text: null,
       pontualStep: false,
       cards: [
         {

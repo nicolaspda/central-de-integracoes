@@ -106,12 +106,6 @@ export default {
               route: "/Journey",
             },
             {
-              label: "Campanhas",
-              icon: "pi pi-megaphone",
-              shortcut: "⌘+U",
-              route: "/Journey",
-            },
-            {
               label: "Templates",
               icon: "pi pi-palette",
               items: [
@@ -151,6 +145,12 @@ export default {
             {
               label: "Filtros",
               icon: "pi pi-filter",
+              shortcut: "⌘+U",
+              route: "/Journey",
+            },
+            {
+              label: "Campanhas",
+              icon: "pi pi-megaphone",
               shortcut: "⌘+U",
               route: "/Journey",
             },
