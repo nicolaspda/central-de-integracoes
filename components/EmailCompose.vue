@@ -1,11 +1,12 @@
 <template>
+  <!--Se disparo pontual não for verdade, mostra escolhas-->
   <div
     class="choice flex flex-wrap gap-3 justify-content-center mt-5 fadein animation-duration-200"
     v-if="!pontualStep"
   >
     <Card
       v-for="(card, key) in cards"
-      :key="key"
+      :key="card"
       style="width: 25rem; overflow: hidden; transition: all 0.5s ease"
       class="shadow-1 hover:shadow-4"
     >
@@ -31,6 +32,7 @@
       </template>
     </Card>
   </div>
+  <!--Se disparo pontual for verdade, mostra os passos-->
   <div
     v-if="pontualStep"
     class="card border-1 border-200 fadein animation-duration-200"
@@ -39,7 +41,7 @@
       <div class="title mb-3 w-max">
         <Inplace :closable="true" class="text-2xl">
           <template #display>
-            {{ text || "Nome do envio" }}
+            {{ text || "Nome do envio" }} <i class="ml-1 pi pi-pencil" />
           </template>
           <template #content>
             <InputText v-model="text" />
@@ -67,26 +69,100 @@
               ></Avatar>
             </span>
           </template>
-          <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <!-- Refatorar componentizando-->
+          <div class="mt-1 flex flex-wrap">
+            <label for="audience">Quem receberá este envio?</label>
+            <Dropdown
+              :options="[
+                'Todos os contatos',
+                'Tags específicas',
+                'Contatos em um Filtro',
+                'Contatos na temperatura',
+              ]"
+              placeholder="Selecione"
+              v-model="selectedAudience"
+              class="w-full mt-2"
+              id="audience"
+            ></Dropdown>
+          </div>
+          <div class="mt-3 flex flex-wrap">
+            <Tags
+              class="toSend"
+              v-if="selectedAudience === 'Tags específicas'"
+            ></Tags>
+            <!-- Adicionar um componente de seleção de filtro/temperatura/etc-->
+            <div class="mt-3">
+              <Checkbox v-model="checked" :binary="true" />
+              &nbsp; <Strong>Não enviar </Strong> para um grupo específico de
+              contatos
+              <Tags class="notToSend mt-3" v-if="checked"></Tags>
+            </div>
+          </div>
         </AccordionTab>
         <!--Remetente-->
         <AccordionTab>
           <template #header>
             <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
-              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar icon="pi pi-at" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Remetente</span>
               <Avatar
                 icon="pi pi-check"
                 shape="circle"
                 class="ml-auto mr-2 bg-green-600 text-white"
+              ></Avatar>
+            </span>
+          </template>
+          <div class="flex justify-content-between">
+            <div class="flex flex-column gap-2">
+              <label for="senderEmail">E-mail do remetente</label>
+              <InputText
+                id="senderEmail"
+                v-model="senderEmail"
+                aria-describedby="username-help"
+              />
+              <small id="username-help">Ex: contato@... ou comunica@... </small>
+              <label for="senderName">Nome do remetente</label>
+              <InputText
+                id="senderName"
+                v-model="senderName"
+                aria-describedby="username-help"
+              />
+              <small id="username-help">Como você se identifica.</small>
+            </div>
+            <Divider layout="vertical" class="w-min" />
+            <div
+              style="
+                background-image: url('https://dl.dnzdns.com/v/MihH57ABF0410');
+                width: 400px;
+              "
+              class="h-20rem bg-cover bg-no-repeat bg-center"
+            >
+              <div class="mt-8 ml-5">
+                <p class="text-2xl pl-1 pt-2 mt-2 mb-0">
+                  <strong>{{ senderName }}</strong>
+                </p>
+                <p class="pl-1 mb-1 mt-0">
+                  <strong>Assunto da mensagem</strong>
+                </p>
+                <p class="pl-1 mt-1 text-sm">Texto de pré-header</p>
+                <div class="flex justify-content-end pr-6 ml-2">
+                  <i class="pi pi-star" />
+                </div>
+                <Divider></Divider>
+              </div>
+            </div>
+          </div>
+        </AccordionTab>
+        <!--Assunto-->
+        <AccordionTab>
+          <template #header>
+            <span class="flex align-items-center gap-2 w-full">
+              <Avatar icon="pi pi-comment" shape="circle" class="bg-blue-100" />
+              <span class="font-bold white-space-nowrap">Assunto</span>
+              <Avatar
+                icon="pi pi-exclamation-triangle"
+                shape="circle"
+                class="ml-auto mr-2 bg-orange-300 text-white"
               ></Avatar>
             </span>
           </template>
@@ -100,12 +176,16 @@
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </AccordionTab>
-        <!--Público-->
+        <!--Conteúdo-->
         <AccordionTab>
           <template #header>
             <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
-              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-th-large"
+                shape="circle"
+                class="bg-blue-100"
+              />
+              <span class="font-bold white-space-nowrap">Conteúdo</span>
               <Avatar
                 icon="pi pi-check"
                 shape="circle"
@@ -114,6 +194,7 @@
             </span>
           </template>
           <p class="m-0">
+            TESTE <br />
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -123,11 +204,16 @@
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </AccordionTab>
+        <!--Agendamento-->
         <AccordionTab>
           <template #header>
             <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
-              <span class="font-bold white-space-nowrap">Público</span>
+              <Avatar
+                icon="pi pi-calendar-plus"
+                shape="circle"
+                class="bg-blue-100"
+              />
+              <span class="font-bold white-space-nowrap">Agendamento</span>
               <Avatar
                 icon="pi pi-check"
                 shape="circle"
@@ -135,37 +221,7 @@
               ></Avatar>
             </span>
           </template>
-          <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </AccordionTab>
-        <AccordionTab>
-          <template #header>
-            <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
-              <span class="font-bold white-space-nowrap">Público</span>
-              <Avatar
-                icon="pi pi-check"
-                shape="circle"
-                class="ml-auto mr-2 bg-green-600 text-white"
-              ></Avatar>
-            </span>
-          </template>
-          <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <p class="m-0">Validações e preparo do envio:</p>
         </AccordionTab>
       </Accordion>
     </div>
@@ -176,6 +232,10 @@
 export default {
   data() {
     return {
+      senderEmail: "",
+      senderName: "Minha empresa",
+      checked: false,
+      selectedAudience: "Todos os contatos",
       text: null,
       pontualStep: false,
       cards: [
@@ -213,3 +273,5 @@ export default {
   },
 };
 </script>
+
+<style></style>
