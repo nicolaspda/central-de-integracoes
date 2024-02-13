@@ -1,6 +1,6 @@
 <template>
   <Menu />
-  <img class="mt-1" src="https://i.postimg.cc/G3WrqvKN/dash-vue.png" />
+  <img class="mt-1" src="https://i.postimg.cc/gkL7SwLP/final-dash.png" />
 </template>
 
 <script>

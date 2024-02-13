@@ -10,7 +10,7 @@
       Conheça os meios e as plataformas disponíveis para integração com as
       ferramentas de automação de marketing e email marketing da Dinamize.
     </p>
-    <TabView>
+    <TabView :activeIndex="active">
       <TabPanel header="Quero Integrar ">
         <div class="fadein animation-duration-200">
           <h3>Através do método:</h3>
@@ -33,7 +33,8 @@
                 ></i>
               </div>
             </template>
-            <Webhook />
+            <!--Recebe o emit que o joga para a tab 2 / Avaliar como mudar para 0 novamente depois e limpar tudo -->
+            <Webhook @sendIntegrations="active = 1" />
           </Panel>
           <!-- Segunda Integração - Nativa -->
           <Panel toggleable collapsed class="mt-4">
@@ -102,6 +103,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      active: 0,
+    };
+  },
+};
 </script>
 <style scoped></style>

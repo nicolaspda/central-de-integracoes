@@ -295,6 +295,7 @@
             label="Adicionar às Interações"
             :disabled="enableButtons"
             icon="pi pi-plus-circle"
+            @click="goIntegrations"
           />
         </div>
       </Fieldset>
@@ -305,6 +306,7 @@
 
 <script>
 export default {
+  emits: ["sendIntegrations"],
   data() {
     return {
       urlValue: "",
@@ -464,6 +466,9 @@ export default {
             item.toLowerCase().includes(event.query.toLowerCase())
           )
         : this.webFields;
+    },
+    goIntegrations() {
+      this.$emit("sendIntegrations");
     },
   },
 };

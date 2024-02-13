@@ -1,5 +1,13 @@
 <template>
-  <div class="card fadein animation-duration-200">
+  <div class="card fadein animation-duration-200 pt-2">
+    <p>
+      Faça um envio pontual relacionado a um determinado assunto, um teste A/B
+      para analisar o comportamento do seu público ou inicie um fluxo de
+      automação.
+    </p>
+    <div class="flex justify-content-end mb-6">
+      <Button label="Novo E-mail" @click="goEmail" />
+    </div>
     <DataTable
       size="small"
       v-model:filters="filters"
@@ -113,7 +121,7 @@
       <!-- Coluna Público -->
       <Column
         field="delivered"
-        header="Público"
+        header="Entrega"
         sortable
         style="min-width: 12rem"
       >
@@ -182,6 +190,7 @@
 import { FilterMatchMode } from "primevue/api";
 
 export default {
+  emits: ["sendEmail"],
   data() {
     return {
       //Itens do tipo de envio
@@ -319,6 +328,10 @@ export default {
       loading: false,
     };
   },
-  methods: {},
+  methods: {
+    goEmail() {
+      this.$emit("sendEmail");
+    },
+  },
 };
 </script>

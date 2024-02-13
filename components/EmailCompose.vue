@@ -51,11 +51,7 @@
           </template>
         </Inplace>
       </div>
-      <Accordion
-        :activeIndex="0"
-        expandIcon="pi pi-plus"
-        collapseIcon="pi pi-minus"
-      >
+      <Accordion expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
         <!--Público-->
         <AccordionTab>
           <template #header>
@@ -63,27 +59,30 @@
               <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
               <span class="font-bold white-space-nowrap">Público</span>
               <Avatar
-                icon="pi pi-check"
+                icon="pi pi-exclamation-triangle"
                 shape="circle"
-                class="ml-auto mr-2 bg-green-600 text-white"
+                class="ml-auto mr-2 bg-orange-400 text-white"
               ></Avatar>
             </span>
           </template>
           <!-- Refatorar componentizando-->
           <div class="mt-1 flex flex-wrap">
             <label for="audience">Quem receberá este envio?</label>
-            <Dropdown
-              :options="[
-                'Todos os contatos',
-                'Tags específicas',
-                'Contatos em um Filtro',
-                'Contatos na temperatura',
-              ]"
-              placeholder="Selecione"
-              v-model="selectedAudience"
-              class="w-full mt-2"
-              id="audience"
-            ></Dropdown>
+            <InputGroup class="gap-2 flex align-items-center pt-2">
+              <Dropdown
+                :options="[
+                  'Todos os contatos',
+                  'Tags específicas',
+                  'Contatos em um Filtro',
+                  'Contatos na temperatura',
+                ]"
+                placeholder="Selecione"
+                v-model="selectedAudience"
+                class="w-full mt-2"
+                id="audience"
+              ></Dropdown>
+              <Button rounded icon="pi pi-plus"></Button>
+            </InputGroup>
           </div>
           <div class="mt-3 flex flex-wrap">
             <Tags
@@ -118,16 +117,16 @@
               <InputText
                 id="senderEmail"
                 v-model="senderEmail"
-                aria-describedby="username-help"
+                aria-describedby="sender"
               />
-              <small id="username-help">Ex: contato@... ou comunica@... </small>
+              <small id="sender">Ex: contato@... ou comunica@... </small>
               <label for="senderName">Nome do remetente</label>
               <InputText
                 id="senderName"
                 v-model="senderName"
-                aria-describedby="username-help"
+                aria-describedby="sender"
               />
-              <small id="username-help">Como você se identifica.</small>
+              <small id="sender">Como você se identifica.</small>
             </div>
             <Divider layout="vertical" class="w-min" />
             <div
@@ -142,9 +141,9 @@
                   <strong>{{ senderName }}</strong>
                 </p>
                 <p class="pl-1 mb-1 mt-0">
-                  <strong>Assunto da mensagem</strong>
+                  <strong>{{ subject }}</strong>
                 </p>
-                <p class="pl-1 mt-1 text-sm">Texto de pré-header</p>
+                <p class="pl-1 mt-1 text-sm">{{ preHeader }}</p>
                 <div class="flex justify-content-end pr-6 ml-2">
                   <i class="pi pi-star" />
                 </div>
@@ -162,19 +161,59 @@
               <Avatar
                 icon="pi pi-exclamation-triangle"
                 shape="circle"
-                class="ml-auto mr-2 bg-orange-300 text-white"
+                class="ml-auto mr-2 bg-orange-400 text-white"
               ></Avatar>
             </span>
           </template>
-          <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <div class="flex justify-content-between">
+            <div class="flex flex-column gap-2">
+              <label for="subject">Assunto</label>
+              <InputText
+                id="subject"
+                v-model="subject"
+                aria-describedby="subject"
+              />
+              <label for="preheader">Pré-Header</label>
+              <InputText
+                id="preheader"
+                v-model="preHeader"
+                aria-describedby="preheader"
+              />
+              <small id="pre"
+                >O pré-header é um texto que aparecerá durante a visualização da
+                mensagem na inbox.</small
+              >
+              <div>
+                <p>
+                  Não sabe como iniciar o assunto? <br />
+                  Experimente sugestões mágicas com IA!
+                </p>
+                <SubjectGenerator></SubjectGenerator>
+              </div>
+            </div>
+            <Divider layout="vertical" class="w-min" />
+            <div
+              style="
+                background-image: url('https://dl.dnzdns.com/v/MihH57ABF0410');
+                width: 400px;
+              "
+              class="h-20rem bg-cover bg-no-repeat bg-center"
+            >
+              <div class="mt-8 ml-5">
+                <p class="text-2xl pl-1 pt-2 mt-2 mb-0">
+                  <strong>{{ senderName }}</strong>
+                </p>
+                <p class="pl-1 mb-1 mt-0">
+                  <strong>{{ subject }}</strong>
+                </p>
+                <p class="pl-1 mt-1 text-sm">{{ preHeader }}</p>
+                <div class="flex justify-content-end pr-6 ml-2">
+                  <i class="pi pi-star" />
+                </div>
+                <Divider></Divider>
+              </div>
+            </div>
+          </div>
         </AccordionTab>
         <!--Conteúdo-->
         <AccordionTab>
@@ -221,7 +260,20 @@
               ></Avatar>
             </span>
           </template>
-          <p class="m-0">Validações e preparo do envio:</p>
+          <div class="card flex justify-content-center">
+            <Checkbox v-model="checkedGA" :binary="true" />
+            Enviar dados ao Google Analytics?
+          </div>
+          <div class="card flex justify-content-center mt-2">
+            <div class="validations w-full">
+              <p class="m-0">Validações e preparo do envio:</p>
+              SPF, CNAME, DKIM, DMARC
+            </div>
+            <div class="schedule w-full">
+              <p class="m-0">Agendamento</p>
+              <Calendar v-model="date" showButtonBar />
+            </div>
+          </div>
         </AccordionTab>
       </Accordion>
     </div>
@@ -232,6 +284,11 @@
 export default {
   data() {
     return {
+      checkedGA: true,
+      date: null,
+      generator: false,
+      subject: "Assunto",
+      preHeader: "Texto Pré-Header inicial",
       senderEmail: "",
       senderName: "Minha empresa",
       checked: false,

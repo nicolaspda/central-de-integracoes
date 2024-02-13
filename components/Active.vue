@@ -62,6 +62,7 @@
       <!-- Coluna Configurações -->
       <Column field="options" header="Config." style="min-width: 12rem">
         <template #body="{ data }">
+          <!-- Aqui tem que voltar a ficar ativo e no outro SpeeDial voltar a diretiva v-else
           <SpeedDial
             v-if="data.type == 'Instantânea'"
             :model="itemsWeb"
@@ -69,9 +70,10 @@
             hideIcon="pi pi-times"
             direction="right"
             :style="{ position: 'relative' }"
-          />
+          /> -->
+
+          <!-- v-else-->
           <SpeedDial
-            v-else
             :model="items"
             showIcon=" pi pi-cog"
             hideIcon="pi pi-times"
