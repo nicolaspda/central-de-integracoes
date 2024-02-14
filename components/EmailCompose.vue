@@ -119,14 +119,17 @@
                 v-model="senderEmail"
                 aria-describedby="sender"
               />
-              <small id="sender">Ex: contato@... ou comunica@... </small>
-              <label for="senderName">Nome do remetente</label>
+              <small id="sender">Ex: contato@seudominio.com.br </small>
+              <label for="senderName" class="mt-4">Nome do remetente</label>
               <InputText
                 id="senderName"
                 v-model="senderName"
                 aria-describedby="sender"
               />
-              <small id="sender">Como você se identifica.</small>
+              <small id="sender"
+                >Como você se identifica quando para quando o e-mail chegar na
+                inbox do usuário.</small
+              >
             </div>
             <Divider layout="vertical" class="w-min" />
             <div
@@ -168,11 +171,14 @@
           <div class="flex justify-content-between">
             <div class="flex flex-column gap-2">
               <label for="subject">Assunto</label>
-              <InputText
-                id="subject"
-                v-model="subject"
-                aria-describedby="subject"
-              />
+              <InputGroup>
+                <InputText
+                  id="subject"
+                  v-model="subject"
+                  aria-describedby="subject"
+                />
+                <Button icon="pi pi-discord" v-tooltip.top="'Emoji'" />
+              </InputGroup>
               <label for="preheader">Pré-Header</label>
               <InputText
                 id="preheader"
