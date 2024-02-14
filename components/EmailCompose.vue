@@ -238,16 +238,74 @@
               ></Avatar>
             </span>
           </template>
-          <p class="m-0">
-            TESTE <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <div class="card">
+            <TabView>
+              <TabPanel header="Criar com">
+                <div class="flex flex-wrap gap-3 justify-content-center mt-2">
+                  <Card
+                    v-for="(card, key) in cardsEditor"
+                    :key="card"
+                    style="
+                      width: 18rem;
+                      height: 22rem;
+                      overflow: hidden;
+                      transition: all 0.5s ease;
+                    "
+                    class="shadow-1 hover:shadow-4"
+                  >
+                    <template #header>
+                      <!--<img alt="user header" style="width: 360px" :src="card.image" />-->
+                      <i :class="card.classe"></i>
+                    </template>
+                    <template #title>{{ card.title }}</template>
+                    <template #subtitle>{{ card.subtitle }}</template>
+                    <template #content>
+                      <p class="m-0">
+                        {{ card.description }}
+                      </p>
+                    </template>
+                    <template #footer>
+                      <div class="flex gap-3 mt-1">
+                        <Button :label="card.label" class="w-full" />
+                      </div>
+                    </template>
+                  </Card>
+                </div>
+              </TabPanel>
+              <TabPanel header="Outras opções">
+                <div class="flex flex-wrap gap-3 justify-content-center mt-2">
+                  <Card
+                    v-for="(card, key) in cardOptions"
+                    :key="card"
+                    style="
+                      width: 18rem;
+                      height: 22rem;
+                      overflow: hidden;
+                      transition: all 0.5s ease;
+                    "
+                    class="shadow-1 hover:shadow-4"
+                  >
+                    <template #header>
+                      <!--<img alt="user header" style="width: 360px" :src="card.image" />-->
+                      <i :class="card.classe"></i>
+                    </template>
+                    <template #title>{{ card.title }}</template>
+                    <template #subtitle>{{ card.subtitle }}</template>
+                    <template #content>
+                      <p class="m-0">
+                        {{ card.description }}
+                      </p>
+                    </template>
+                    <template #footer>
+                      <div class="flex gap-3 mt-1">
+                        <Button :label="card.label" class="w-full" />
+                      </div>
+                    </template>
+                  </Card>
+                </div>
+              </TabPanel>
+            </TabView>
+          </div>
         </AccordionTab>
         <!--Agendamento-->
         <AccordionTab>
@@ -311,7 +369,7 @@ export default {
           image:
             "https://cdn.pixabay.com/photo/2016/06/04/14/56/icon-1435687_960_720.png",
           classe:
-            "flex align items-center justify-content-center pi pi-send pb-8 pt-8 bg-blue-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-send pb-8 pt-8 bg-blue-100 text-6xl",
         },
         {
           title: "Teste A/B",
@@ -320,7 +378,7 @@ export default {
             "Realize testes em diferentes circunstâncias para descobrir qual email se adapta melhor a sua base.",
           label: "Criar Teste A/B",
           classe:
-            "flex align items-center justify-content-center pi pi-copy pb-8 pt-8 bg-indigo-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-copy pb-8 pt-8 bg-indigo-100 text-6xl",
         },
         {
           title: "Fluxo de Automação",
@@ -329,7 +387,93 @@ export default {
             "Planeje disparos pontuais aos contatos que realizarem determinadas ações ou possuírem determinados comportamentos.",
           label: "Criar Fluxo de automação",
           classe:
-            "flex align items-center justify-content-center pi pi-forward pb-8 pt-8 bg-cyan-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-forward pb-8 pt-8 bg-cyan-100 text-6xl",
+        },
+      ],
+      cardsEditor: [
+        {
+          title: "Editor em branco",
+          subtitle: "Editor de Texto com HTML",
+          description: "Edidor com recursos de texto e edição de código-fonte.",
+          label: "Selecionar",
+          image:
+            "https://cdn.pixabay.com/photo/2016/06/04/14/56/icon-1435687_960_720.png",
+          classe:
+            "flex align-items-center justify-content-center pi pi-file-word pb-5 pt-5 bg-blue-100 text-6xl",
+        },
+        {
+          title: "Editor clássico",
+          subtitle: "Drag and Drop",
+          description: "Edidor com recursos simples de arrastar e soltar.",
+          label: "Selecionar",
+          image:
+            "https://cdn.pixabay.com/photo/2016/06/04/14/56/icon-1435687_960_720.png",
+          classe:
+            "flex align-items-center justify-content-center pi pi-table pb-5 pt-5 bg-indigo-100 text-6xl",
+        },
+        {
+          title: "Dinamize Builder",
+          subtitle: "Drag and Drop",
+          description: "Novo editor com recursos avançados.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-th-large pb-5 pt-5 bg-cyan-100 text-6xl",
+        },
+      ],
+      cardOptions: [
+        {
+          title: "A partir de um modelo",
+          subtitle: "Template prévio",
+          description:
+            "Utilize um dos modelos salvos em sua galeria de templates.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-palette pb-5 pt-5 bg-indigo-100 text-6xl",
+        },
+        {
+          title: "Upload de arquivo HTML",
+          subtitle: "HTML",
+          description:
+            "Utilize um dos modelos salvos em sua galeria de templates.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-code pb-5 pt-5 bg-indigo-100 text-6xl",
+        },
+        {
+          title: "Upload de arquivo ZIP",
+          subtitle: "Arquivo compactado",
+          description:
+            "Utilize um dos modelos salvos em sua galeria de templates.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-box pb-5 pt-5 bg-indigo-100 text-6xl",
+        },
+        {
+          title: "A partir de uma URL",
+          subtitle: "URL",
+          description:
+            "Utilize um dos modelos salvos em sua galeria de templates.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-cloud pb-5 pt-5 bg-indigo-100 text-6xl",
+        },
+        {
+          title: "Copiar o conteúdo de uma URL",
+          subtitle: "URL",
+          description:
+            "Utilize um dos modelos salvos em sua galeria de templates.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-cloud-download pb-5 pt-5 bg-indigo-100 text-6xl",
+        },
+        {
+          title: "A partir de um envio anterior",
+          subtitle: "Template prévio",
+          description:
+            "Utilize um dos modelos salvos em sua galeria de templates.",
+          label: "Selecionar",
+          classe:
+            "flex align-items-center justify-content-center pi pi-replay pb-5 pt-5 bg-indigo-100 text-6xl",
         },
       ],
     };
