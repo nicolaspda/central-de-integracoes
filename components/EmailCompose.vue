@@ -239,6 +239,7 @@
             </span>
           </template>
           <div class="card">
+            <!-- Tab Editores cardsEditor -->
             <TabView>
               <TabPanel header="Criar com">
                 <div class="flex flex-wrap gap-3 justify-content-center mt-2">
@@ -272,6 +273,7 @@
                   </Card>
                 </div>
               </TabPanel>
+              <!-- Tab Outras opções cardOptions -->
               <TabPanel header="Outras opções">
                 <div class="flex flex-wrap gap-3 justify-content-center mt-2">
                   <Card
@@ -279,7 +281,7 @@
                     :key="card"
                     style="
                       width: 18rem;
-                      height: 22rem;
+                      height: 23rem;
                       overflow: hidden;
                       transition: all 0.5s ease;
                     "
@@ -343,7 +345,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   data() {
@@ -428,13 +429,13 @@ export default {
             "Utilize um dos modelos salvos em sua galeria de templates.",
           label: "Selecionar",
           classe:
-            "flex align-items-center justify-content-center pi pi-palette pb-5 pt-5 bg-indigo-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-palette pb-5 pt-5 bg-blue-100 text-6xl",
         },
         {
           title: "Upload de arquivo HTML",
           subtitle: "HTML",
           description:
-            "Utilize um dos modelos salvos em sua galeria de templates.",
+            "Escolha um arquivo HTML salvo em seu computador e realize alterações.",
           label: "Selecionar",
           classe:
             "flex align-items-center justify-content-center pi pi-code pb-5 pt-5 bg-indigo-100 text-6xl",
@@ -443,37 +444,35 @@ export default {
           title: "Upload de arquivo ZIP",
           subtitle: "Arquivo compactado",
           description:
-            "Utilize um dos modelos salvos em sua galeria de templates.",
+            "Faça upload de um zip contendo o HTML na raíz e uma pasta com as imagens.",
           label: "Selecionar",
           classe:
-            "flex align-items-center justify-content-center pi pi-box pb-5 pt-5 bg-indigo-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-box pb-5 pt-5 bg-cyan-100 text-6xl",
         },
         {
           title: "A partir de uma URL",
           subtitle: "URL",
           description:
-            "Utilize um dos modelos salvos em sua galeria de templates.",
+            "No momento do envio, vamos avaliar a URL utilizada e disparar seu conteúdo.",
           label: "Selecionar",
           classe:
-            "flex align-items-center justify-content-center pi pi-cloud pb-5 pt-5 bg-indigo-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-cloud pb-5 pt-5 bg-purple-100 text-6xl",
         },
         {
           title: "Copiar o conteúdo de uma URL",
           subtitle: "URL",
-          description:
-            "Utilize um dos modelos salvos em sua galeria de templates.",
+          description: "Copie o conteúdo de uma URL e realize as alterações.",
           label: "Selecionar",
           classe:
-            "flex align-items-center justify-content-center pi pi-cloud-download pb-5 pt-5 bg-indigo-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-cloud-download pb-5 pt-5 bg-pink-100 text-6xl",
         },
         {
           title: "A partir de um envio anterior",
           subtitle: "Template prévio",
-          description:
-            "Utilize um dos modelos salvos em sua galeria de templates.",
+          description: "Conteúdo de uma mensagem já disparada previamente.",
           label: "Selecionar",
           classe:
-            "flex align-items-center justify-content-center pi pi-replay pb-5 pt-5 bg-indigo-100 text-6xl",
+            "flex align-items-center justify-content-center pi pi-replay pb-5 pt-5 bg-red-100 text-6xl",
         },
       ],
     };
