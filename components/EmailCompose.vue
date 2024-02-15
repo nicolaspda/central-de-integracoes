@@ -326,19 +326,210 @@
               ></Avatar>
             </span>
           </template>
-          <div class="card flex justify-content-center">
-            <Checkbox v-model="checkedGA" :binary="true" />
-            Enviar dados ao Google Analytics?
-          </div>
-          <div class="card flex justify-content-center mt-2">
-            <div class="validations w-full">
-              <p class="m-0">Validações e preparo do envio:</p>
-              SPF, CNAME, DKIM, DMARC
-            </div>
-            <div class="schedule w-full">
-              <p class="m-0">Agendamento</p>
-              <Calendar v-model="date" showButtonBar />
-            </div>
+          <div class="card pt-2">
+            <TabView class="tabview-custom">
+              <!--1 passo -->
+              <TabPanel>
+                <template #header>
+                  <div class="flex align-items-center gap-2">
+                    <Avatar shape="circle">1º</Avatar>
+                    <span class="font-bold white-space-nowrap">Validações</span>
+                  </div>
+                </template>
+                <div class="flex justify-content-evenly">
+                  <!--Validação -->
+                  <div class="validations w-2">
+                    <Avatar
+                      icon="pi pi-check"
+                      class="bg-green-600 text-white"
+                      size="normal"
+                      shape="circle"
+                    />
+                    <span class="ml-2">CNAME</span>
+                    <Divider></Divider>
+                    <Avatar
+                      icon="pi pi-check"
+                      class="bg-green-600 text-white"
+                      size="normal"
+                      shape="circle"
+                    />
+                    <span> SPF</span>
+                    <Divider></Divider>
+                    <Avatar
+                      icon="pi pi-times"
+                      class="bg-red-600 text-white"
+                      size="normal"
+                      shape="circle"
+                    />
+                    <span class="ml-2">DKIM</span>
+                    <Divider></Divider>
+                    <Avatar
+                      icon="pi pi-times"
+                      class="bg-red-600 text-white"
+                      size="normal"
+                      shape="circle"
+                    />
+                    <span class="ml-2">DMARC</span>
+                  </div>
+                  <!--Divisor responsivo-->
+                  <div class="w-full md:w-2">
+                    <Divider layout="vertical" class="hidden md:flex"
+                      ><b>-></b>
+                    </Divider>
+                    <Divider
+                      layout="horizontal"
+                      class="flex md:hidden"
+                      align="center"
+                    >
+                      <i class="pi pi-arrow-down" style="font-size: 0.9rem"></i>
+                    </Divider>
+                  </div>
+                  <!--OptOut -->
+                  <div class="optOut">
+                    <span>Qual será o método de descadastro?</span>
+                    <div class="card flex justify-content-start">
+                      <div class="flex flex-wrap gap-3 w-min">
+                        <div class="flex align-items-center">
+                          <RadioButton
+                            v-model="checkedOptout"
+                            inputId="semConfirmacao"
+                            name="semConfirmacao"
+                            value="semConfirmacao"
+                          />
+                          <label for="ingredient1" class="ml-2"
+                            >Sem confirmação</label
+                          >
+                        </div>
+                        <div class="flex align-items-center">
+                          <RadioButton
+                            v-model="checkedOptout"
+                            inputId="confirmacao"
+                            name="confirmacao"
+                            value="confirmacao"
+                          />
+                          <label for="confirmacao" class="ml-2"
+                            >Com comfirmação</label
+                          >
+                        </div>
+                        <div class="flex align-items-center">
+                          <RadioButton
+                            v-model="checkedOptout"
+                            inputId="motivos"
+                            name="motivos"
+                            value="motivos"
+                          />
+                          <label for="motivos" class="ml-2">Com motivos</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Divisor responsivo-->
+                  <div class="w-full md:w-2">
+                    <Divider layout="vertical" class="hidden md:flex"
+                      ><b>-></b>
+                    </Divider>
+                    <Divider
+                      layout="horizontal"
+                      class="flex md:hidden"
+                      align="center"
+                    >
+                      <i class="pi pi-arrow-down" style="font-size: 0.9rem"></i>
+                    </Divider>
+                  </div>
+                  <!--Velocidade -->
+                  <div class="speed flex w-2">Velocidade do envio</div>
+                </div>
+              </TabPanel>
+              <!--2 passo -->
+              <TabPanel>
+                <template #header>
+                  <div class="flex align-items-center gap-2">
+                    <Avatar shape="circle">2º</Avatar>
+                    <span class="font-bold white-space-nowrap"
+                      >Rastreamento e Mídias
+                    </span>
+                  </div>
+                </template>
+                <div class="card media">
+                  <div class="GA card flex align-items-center p-2">
+                    <Avatar
+                      icon="pi pi-google"
+                      class="mr-2 text-orange-500"
+                      size="large"
+                      shape="circle"
+                    />
+                    <Checkbox v-model="checkedGA" :binary="true" />
+                    &nbsp;Enviar dados ao Google Analytics
+                  </div>
+
+                  <div class="FB card flex align-items-center p-2">
+                    <Avatar
+                      icon="pi pi-facebook"
+                      class="mr-2 text-blue-600"
+                      size="large"
+                      shape="circle"
+                    />
+                    <Checkbox v-model="checkedFB" :binary="true" />
+                    &nbsp;Postar disparo no Facebook
+                  </div>
+
+                  <div class="TW card flex align-items-center p-2">
+                    <Avatar
+                      icon="pi pi-twitter"
+                      class="mr-2 text-blue-400"
+                      size="large"
+                      shape="circle"
+                    />
+                    <Checkbox v-model="checkedTW" :binary="true" />
+                    &nbsp; Postar disparo no Twitter (X)
+                  </div>
+                </div>
+              </TabPanel>
+              <!--3 passo -->
+              <TabPanel>
+                <template #header>
+                  <div class="flex align-items-center gap-2">
+                    <Avatar shape="circle">3º</Avatar>
+                    <span class="font-bold white-space-nowrap"> Disparo </span>
+                  </div>
+                </template>
+                <div class="flex justify-content-between">
+                  <div class="test&schedule flex flex-wrap gap-3">
+                    <div class="test flex flex-column gap-2">
+                      <label for="testEmail"
+                        >Teste seu envio antes do disparo oficial:
+                      </label>
+                      <InputText
+                        id="testEmail"
+                        type="email"
+                        v-model="testEmail"
+                        aria-describedby="testEmail"
+                        placeholder="seuemail@seudominio.com"
+                      />
+                    </div>
+                    <div class="calendar">TESTE</div>
+                  </div>
+                  <Divider layout="vertical" class="w-min" />
+                  <div
+                    class="flex justify-content-center align-items-center flex-wrap"
+                  >
+                    <div class="audienceLimit">
+                      Deseja limitar o público desse disparo?
+                    </div>
+                    <div class="realSend">
+                      <Button
+                        :label="realSend"
+                        :icon="
+                          realSend === 'Enviar agora'
+                            ? 'pi pi-send'
+                            : 'pi pi-calendar'
+                        "
+                      />
+                    </div>
+                  </div>
+                </div>
+              </TabPanel>
+            </TabView>
           </div>
         </AccordionTab>
       </Accordion>
@@ -349,7 +540,12 @@
 export default {
   data() {
     return {
+      realSend: "Enviar agora",
+      testEmail: "",
+      checkedOptout: "",
       checkedGA: true,
+      checkedFB: false,
+      checkedTW: false,
       date: null,
       generator: false,
       subject: "Assunto",
