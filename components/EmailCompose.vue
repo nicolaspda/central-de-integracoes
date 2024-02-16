@@ -505,25 +505,34 @@
                         v-model="testEmail"
                         aria-describedby="testEmail"
                         placeholder="seuemail@seudominio.com"
+                        class="w-full"
                       />
                     </div>
-                    <div class="calendar">TESTE</div>
-                  </div>
-                  <Divider layout="vertical" class="w-min" />
-                  <div
-                    class="flex justify-content-center align-items-center flex-wrap"
-                  >
-                    <div class="audienceLimit">
-                      Deseja limitar o público desse disparo?
+                    <div class="calendar w-7 gap-2">
+                      <span>Quero agendar</span> <br />
+                      <Calendar v-model="date" class="w-full" />
                     </div>
-                    <div class="realSend">
+                  </div>
+                  <!--Divisor-->
+                  <Divider layout="vertical" class="w-min" />
+                  <div class="flex justify-content-center flex-wrap">
+                    <div class="totalAudience w-7">
+                      <h3>
+                        Público total:
+                        <span class="text-3xl"> 1254 </span>
+                      </h3>
+                    </div>
+                    <div class="audienceProvider">
+                      <MeterGroup :value="provider" />
+                    </div>
+                    <div class="audienceLimit w-7 mt-5">
+                      <Checkbox v-model="checkedLimit" :binary="true" />
+                      Limitar o público desse disparo?
+                    </div>
+                    <div class="realSend w-5 mt-5">
                       <Button
-                        :label="realSend"
-                        :icon="
-                          realSend === 'Enviar agora'
-                            ? 'pi pi-send'
-                            : 'pi pi-calendar'
-                        "
+                        :label="date === null ? realSend : 'Agendar'"
+                        :icon="date === null ? 'pi pi-send' : 'pi pi-calendar'"
                       />
                     </div>
                   </div>
@@ -546,6 +555,7 @@ export default {
       checkedGA: true,
       checkedFB: false,
       checkedTW: false,
+      checkedLimit: false,
       date: null,
       generator: false,
       subject: "Assunto",
@@ -670,6 +680,22 @@ export default {
           classe:
             "flex align-items-center justify-content-center pi pi-replay pb-5 pt-5 bg-red-100 text-6xl",
         },
+      ],
+      provider: [
+        { label: "Gmail", color: "#34d399", value: 24, icon: "pi pi-google" },
+        {
+          label: "Hotmail",
+          color: "#60a5fa",
+          value: 42,
+          icon: "pi pi-microsoft",
+        },
+        {
+          label: "Yahoo",
+          color: "#c084fc",
+          value: 24,
+          icon: "pi pi-filter-fill",
+        },
+        { label: "Outros", color: "#fbbf24", value: 10, icon: "pi pi-at" },
       ],
     };
   },

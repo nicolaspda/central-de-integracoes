@@ -57,10 +57,11 @@
           </div>
           <div class="flex justify-content-end">
             <Button
-              icon="pi pi-refresh"
+              :icon="refresh"
               rounded
               raised
               v-tooltip.hover.top="'Recarregar lista de envios'"
+              @click="loadDatatable"
             />
           </div>
         </div>
@@ -193,6 +194,8 @@ export default {
   emits: ["sendEmail"],
   data() {
     return {
+      //Refresh do botão de lista
+      refresh: "pi pi-refresh",
       //Itens do tipo de envio
       sendType: ["Todos", "Pontual", "Teste A/B", "Automação"],
       selectedType: "Todos",
@@ -331,6 +334,13 @@ export default {
   methods: {
     goEmail() {
       this.$emit("sendEmail");
+    },
+    //Spinner do botão de recarregar lista
+    loadDatatable() {
+      this.refresh = "pi pi-spin pi-refresh";
+      setTimeout(() => {
+        this.refresh = "pi pi-refresh";
+      }, 2000);
     },
   },
 };
