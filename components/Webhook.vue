@@ -3,7 +3,7 @@
   <div v-if="step1">
     <div class="flex flex-column md:flex-row">
       <div
-        class="w-full md:w-5 flex flex-column justify-content-center gap-3 py-5"
+        class="w-full md:w-5 flex flex-column justify-content-center align-items-center gap-3 py-5"
       >
         <!-- Primeiro componente -->
         Conecte o sistema:
@@ -30,7 +30,6 @@
             </div>
           </template>
         </Dropdown>
-        <br />
         <!-- Segundo componente -->
         Quando isso acontecer...
         <Dropdown
@@ -59,7 +58,7 @@
         </Divider>
       </div>
       <div
-        class="w-full md:w-5 flex flex-column justify-content-center gap-3 py-5"
+        class="w-full md:w-5 flex flex-column justify-content-center align-items-center gap-3 py-5"
       >
         <!-- Quarto componente -->
         Com a Dinamize:
