@@ -10,19 +10,38 @@
         class="flex mr-6 pb-3 mb-2"
       />
       <span class="p-text-secondary block mb-5">Acesse sua conta:</span>
-      <div class="flex align-items-center gap-3 mb-3">
+      <div class="flex align-items-center gap-1 mb-3">
         <label for="username" class="font-semibold w-6rem">Usuário</label>
-        <InputText id="username" class="flex-auto" autocomplete="off" />
+        <div
+          :class="inputFocusEmail === true ? animation : 'h-2rem'"
+          style="width: 3px"
+        ></div>
+        <InputText
+          id="username"
+          class="flex-auto"
+          autocomplete="off"
+          v-model="email"
+          @focus="changeFocus('email')"
+        />
       </div>
-      <div class="flex align-items-center gap-3 mb-5">
-        <label for="password" class="font-semibold w-6rem">Senha</label>
-        <Password v-model="password" :feedback="false" toggleMask />
+      <div class="flex align-items-center gap-1 mb-5">
+        <label for="password" class="font-semibold w-6rem"> Senha </label>
+        <div
+          :class="inputFocusPass === true ? animation : 'h-2rem'"
+          style="width: 3px"
+        ></div>
+        <Password
+          v-model="password"
+          :feedback="false"
+          @focus="changeFocus('password')"
+          toggleMask
+        />
       </div>
       <div class="flex justify-content-between">
         <div>
           <a href="https://www.dinamize.com.br/" class="text-xs"
-            >Esqueci minha senha</a
-          >
+            >Esqueci minha senha
+          </a>
         </div>
         <div class="flex justify-content-end gap-2">
           <NuxtLink to="/Loading">
@@ -42,8 +61,24 @@
 export default {
   data() {
     return {
+      animation:
+        "h-2rem bg-indigo-400 scalein animation-duration-200 border-round",
+      inputFocusEmail: false,
+      inputFocusPass: false,
+      email: null,
       password: null,
     };
+  },
+  methods: {
+    changeFocus(clicked) {
+      if (clicked === "email") {
+        this.inputFocusEmail = true;
+        this.inputFocusPass = false;
+      } else if (clicked === "password") {
+        this.inputFocusEmail = false;
+        this.inputFocusPass = true;
+      }
+    },
   },
 };
 </script>
