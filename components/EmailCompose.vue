@@ -495,28 +495,63 @@
                 </template>
                 <div class="flex justify-content-between">
                   <div class="test&schedule flex flex-wrap gap-3">
-                    <div class="test flex flex-column gap-2">
+                    <div class="test">
                       <label for="testEmail"
-                        >Teste seu envio antes do disparo oficial:
+                        >Teste seu envio antes do disparo oficial
                       </label>
-                      <InputText
-                        id="testEmail"
-                        type="email"
-                        v-model="testEmail"
-                        aria-describedby="testEmail"
-                        placeholder="seuemail@seudominio.com"
-                        class="w-full"
-                      />
+                      <InputGroup>
+                        <InputText
+                          id="testEmail"
+                          type="email"
+                          v-model="testEmail"
+                          aria-describedby="testEmail"
+                          placeholder="seuemail@seudominio.com"
+                        />
+                        <Button label="Testar envio" class="h-min"></Button>
+                      </InputGroup>
                     </div>
-                    <div class="calendar w-7 gap-2">
-                      <span>Quero agendar</span> <br />
-                      <Calendar v-model="date" class="w-full" />
+                    <div class="choose">
+                      <div class="formgroup-inline">
+                        <div class="field-radiobutton">
+                          <RadioButton
+                            v-model="sendType"
+                            inputId="sendNow"
+                            name="sendNow"
+                            value="sendNow"
+                          />
+                          <label for="sendNow">Quero enviar agora</label>
+                        </div>
+                        <div class="field-radiobutton">
+                          <RadioButton
+                            v-model="sendType"
+                            inputId="sendLater"
+                            name="sendLater"
+                            value="sendLater"
+                          />
+                          <label for="sendLater">Quero agendar</label>
+                        </div>
+                      </div>
+                      <div class="calendar" v-if="sendType == 'sendLater'">
+                        <label for="buttondisplay" class="block mb-2">
+                          Para o dia
+                        </label>
+                        <Calendar
+                          v-model="date"
+                          showIcon
+                          :showOnFocus="false"
+                          inputId="buttondisplay"
+                          dateFormat="dd/mm/yy"
+                          class="w-24rem"
+                        />
+                      </div>
                     </div>
                   </div>
                   <!--Divisor-->
                   <Divider layout="vertical" class="w-min" />
                   <div class="flex justify-content-center flex-wrap">
-                    <div class="totalAudience w-7">
+                    <div
+                      class="totalAudience lg:w-8 flex justify-content-center"
+                    >
                       <h3>
                         Público total:
                         <span class="text-3xl"> 1254 </span>
@@ -529,10 +564,15 @@
                       <Checkbox v-model="checkedLimit" :binary="true" />
                       Limitar o público desse disparo?
                     </div>
-                    <div class="realSend w-5 mt-5">
+                    <div class="realSend mt-5">
                       <Button
-                        :label="date === null ? realSend : 'Agendar'"
-                        :icon="date === null ? 'pi pi-send' : 'pi pi-calendar'"
+                        :disabled="sendType == ''"
+                        :label="sendType == 'sendLater' ? 'Agendar' : 'Enviar'"
+                        :icon="
+                          sendType == 'sendLater'
+                            ? 'pi pi-calendar'
+                            : 'pi pi-send'
+                        "
                       />
                     </div>
                   </div>
@@ -549,7 +589,7 @@
 export default {
   data() {
     return {
-      realSend: "Enviar agora",
+      sendType: "",
       testEmail: "",
       checkedOptout: "",
       checkedGA: true,

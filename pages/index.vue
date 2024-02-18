@@ -70,6 +70,7 @@ export default {
     };
   },
   methods: {
+    /*função que anima a tabulação dos inputs*/
     changeFocus(clicked) {
       if (clicked === "email") {
         this.inputFocusEmail = true;
