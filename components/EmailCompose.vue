@@ -499,7 +499,7 @@
                       <label for="testEmail"
                         >Teste seu envio antes do disparo oficial
                       </label>
-                      <InputGroup>
+                      <InputGroup class="mt-2">
                         <InputText
                           id="testEmail"
                           type="email"
@@ -511,27 +511,25 @@
                       </InputGroup>
                     </div>
                     <div class="choose">
-                      <div class="formgroup-inline">
-                        <div class="field-radiobutton">
-                          <RadioButton
-                            v-model="sendType"
-                            inputId="sendNow"
-                            name="sendNow"
-                            value="sendNow"
-                          />
-                          <label for="sendNow">Quero enviar agora</label>
-                        </div>
-                        <div class="field-radiobutton">
-                          <RadioButton
-                            v-model="sendType"
-                            inputId="sendLater"
-                            name="sendLater"
-                            value="sendLater"
-                          />
-                          <label for="sendLater">Quero agendar</label>
-                        </div>
+                      <div class="field-radiobutton">
+                        <RadioButton
+                          v-model="sendType"
+                          inputId="sendNow"
+                          name="sendNow"
+                          value="sendNow"
+                        />
+                        <label for="sendNow">Quero enviar agora</label>
                       </div>
-                      <div class="calendar" v-if="sendType == 'sendLater'">
+                      <div class="field-radiobutton">
+                        <RadioButton
+                          v-model="sendType"
+                          inputId="sendLater"
+                          name="sendLater"
+                          value="sendLater"
+                        />
+                        <label for="sendLater">Quero agendar</label>
+                      </div>
+                      <div class="calendar" v-show="sendType == 'sendLater'">
                         <label for="buttondisplay" class="block mb-2">
                           Para o dia
                         </label>
