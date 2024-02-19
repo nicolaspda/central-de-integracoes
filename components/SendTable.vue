@@ -37,10 +37,13 @@
             <!-- Seletor do tipo de status -->
             <FloatLabel class="w-full md:w-14rem">
               <Dropdown
-                v-model="selectedStatus"
+                v-model="filters['status'].value"
                 id="status"
                 :options="sendStatus"
                 class="w-full"
+                optionLabel="label"
+                optionValue="code"
+                :showClear="true"
               />
               <label for="status">Status</label>
             </FloatLabel>
@@ -201,15 +204,13 @@ export default {
       selectedType: "Todos",
       //Itens do tipo de status
       sendStatus: [
-        "Todos",
-        "Enviando",
-        "Enviado",
-        "Agendado",
-        "Enviado Parcialmente",
-        "Rascunho",
-        "Arquivado",
+        { code: "EN", label: "Enviando" },
+        { code: "FN", label: "Enviado" },
+        { code: "AG", label: "Agendado" },
+        { code: "PP", label: "Enviado Parcialmente" },
+        { code: "PD", label: "Rascunho" },
+        { code: "AR", label: "Arquivado" },
       ],
-      selectedStatus: "Todos",
       sendSelected: null,
       metaKey: true,
       items: [
@@ -327,6 +328,7 @@ export default {
       ],
       filters: {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        status: { value: null, matchMode: FilterMatchMode.EQUALS },
       },
       loading: false,
     };
