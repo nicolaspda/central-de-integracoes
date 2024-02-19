@@ -529,7 +529,10 @@
                         />
                         <label for="sendLater">Quero agendar</label>
                       </div>
-                      <div class="calendar" v-show="sendType == 'sendLater'">
+                      <div
+                        class="calendar fadein animation-duration-100"
+                        v-show="sendType == 'sendLater'"
+                      >
                         <label for="buttondisplay" class="block mb-2">
                           Para o dia
                         </label>
