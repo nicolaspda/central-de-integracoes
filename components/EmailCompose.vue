@@ -566,7 +566,11 @@
                       Limitar o público desse disparo?
                     </div>
                     <div class="realSend mt-5">
+                      <!--Confirmação do envio ou agendamento-->
+                      <Toast />
+                      <ConfirmDialog></ConfirmDialog>
                       <Button
+                        @click="confirm"
                         :disabled="sendType == ''"
                         :label="sendType == 'sendLater' ? 'Agendar' : 'Enviar'"
                         :icon="
@@ -739,6 +743,30 @@ export default {
         { label: "Outros", color: "#fbbf24", value: 10, icon: "pi pi-at" },
       ],
     };
+  },
+  methods: {
+    /*Confirmação do envio*/
+    confirm() {
+      this.$confirm.require({
+        message: "Tem certeza que deseja prosseguir?",
+        header: "Confirmação",
+        icon: "pi pi-exclamation-triangle",
+        rejectClass: "p-button-secondary p-button-outlined",
+        rejectLabel: "Cancelar",
+        acceptLabel: "Prosseguir",
+        accept: () => {
+          this.$toast.add({
+            severity: "info",
+            summary: "Confirmado",
+            detail:
+              this.sendType == "sendLater"
+                ? "Envio agendado com sucesso!"
+                : "Você iniciou o envio!",
+            life: 3000,
+          });
+        },
+      });
+    },
   },
 };
 </script>
