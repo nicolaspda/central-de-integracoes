@@ -65,7 +65,7 @@
         <Dropdown disabled placeholder="Dinamize" class="w-full md:w-25rem">
           <template #value>
             <img
-              src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/4067564985/original/60x2t.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20240219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240219T114919Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=675e57d8968afb5badbc17fdb7dae301855a29dd136a8bd6dfe4b356c01df0cf"
+              src="https://dl.dnzdns.com/v/IvFMc1ABF0473"
               style="width: 16px"
             />
             &nbsp; Dinamize
@@ -81,7 +81,7 @@
         >
           <template #value>
             <img
-              src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/4067564985/original/60x2t.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20240219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240219T114919Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=675e57d8968afb5badbc17fdb7dae301855a29dd136a8bd6dfe4b356c01df0cf"
+              src="https://dl.dnzdns.com/v/IvFMc1ABF0473"
               style="width: 16px"
             />
             &nbsp; Cadastrar contato
@@ -96,7 +96,7 @@
       <Avatar :image="selectedPlatform.img" class="mr-1" size="xlarge" />
       <i class="pi pi-plus" style="font-size: 1rem"></i>
       <Avatar
-        image="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/4067564985/original/60x2t.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAS6FNSMY2XLZULJPI%2F20240219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240219T114919Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=675e57d8968afb5badbc17fdb7dae301855a29dd136a8bd6dfe4b356c01df0cf"
+        image="https://dl.dnzdns.com/v/IvFMc1ABF0473"
         class="mr-2"
         size="xlarge"
       />
