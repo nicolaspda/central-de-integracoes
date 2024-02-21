@@ -16,6 +16,7 @@
       paginator
       :rows="10"
       rowHover
+      :rowClass="rowClass"
       dataKey="title"
       filterDisplay="row"
       :loading="loading"
@@ -211,7 +212,7 @@ export default {
         { code: "PD", label: "Rascunho" },
         { code: "AR", label: "Arquivado" },
       ],
-      sendSelected: null,
+      sendSelected: [],
       metaKey: true,
       items: [
         {
@@ -258,6 +259,7 @@ export default {
           },
         },
       ],
+      /*Dados da tabela*/
       sendCollection: [
         {
           title: "Produtos top",
@@ -334,8 +336,16 @@ export default {
     };
   },
   methods: {
+    //Executa o emit para enviar o email no componente pai (EmailCompose.vue)
     goEmail() {
       this.$emit("sendEmail");
+    },
+    //Passa classe (estilo) para a linha selecionada
+    rowClass(data) {
+      return [{ "bg-yellow-50": this.sendSelected.includes(data) }];
+    },
+    stockClass(data) {
+      return;
     },
     //Spinner do botão de recarregar lista
     loadDatatable() {
