@@ -58,6 +58,7 @@
         <div class="flex align-items-center gap-2">
           <Avatar
             icon="pi pi-bell"
+            v-badge.primary
             class="bg-white hover:surface-100"
           />
           <Divider layout="vertical" />
