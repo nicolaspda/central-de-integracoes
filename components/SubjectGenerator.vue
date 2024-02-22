@@ -1,6 +1,9 @@
 <template>
   <div class="card flex justify-content-center">
-    <Button @click="visible = true" label="✨ Gerador de assuntos" />
+    <Button
+      @click="visible = true"
+      label="✨ Gerador de assuntos"
+    />
     <Dialog
       v-model:visible="visible"
       modal

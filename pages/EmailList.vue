@@ -7,7 +7,10 @@
       E-mail
     </h2>
     <!-- Componente da lista de envios -->
-    <SendTable @sendEmail="show = false" v-if="show" />
+    <SendTable
+      @sendEmail="show = false"
+      v-if="show"
+    />
     <div v-else>
       <EmailCompose />
     </div>

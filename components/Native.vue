@@ -4,7 +4,10 @@
     <!-- Seleção de plataforma -->
     <div class="card flex justify-content-center">
       <FloatLabel>
-        <InputText id="platforms" v-model="searchPlatform" />
+        <InputText
+          id="platforms"
+          v-model="searchPlatform"
+        />
         <label for="platforms">Pesquise sua plataforma</label>
       </FloatLabel>
     </div>
@@ -30,7 +33,11 @@
           </template>
           <template #footer>
             <div class="flex justify-content-center gap-3 mt-1">
-              <Button label="Integrar" class="w-full" @click="Step2(card)" />
+              <Button
+                label="Integrar"
+                class="w-full"
+                @click="Step2(card)"
+              />
             </div>
           </template>
         </Card>
@@ -43,7 +50,10 @@
       <Fieldset>
         <template #legend>
           <div class="flex align-items-center">
-            <Avatar :image="selectedPlatform.img" shape="circle"></Avatar>
+            <Avatar
+              :image="selectedPlatform.img"
+              shape="circle"
+            ></Avatar>
             <span class="font-bold pl-2">{{ selectedPlatform.name }}</span>
           </div>
         </template>
@@ -70,19 +80,31 @@
           Adicione as informações:
           <!-- Primeiro componente -->
           <div class="flex flex-column gap-2 mt-4 w-full">
-            <label for="accountname" class="font-bold">Nome da loja: </label>
+            <label
+              for="accountname"
+              class="font-bold"
+              >Nome da loja:
+            </label>
             <InputText
               id="accountname"
               v-model="accountname"
               aria-describedby="username-help"
             />
-            <label for="appkey" class="font-bold">AppKey</label>
+            <label
+              for="appkey"
+              class="font-bold"
+              >AppKey</label
+            >
             <InputText
               id="appkey"
               v-model="appkey"
               aria-describedby="username-help"
             />
-            <label for="apptoken" class="font-bold">AppToken</label>
+            <label
+              for="apptoken"
+              class="font-bold"
+              >AppToken</label
+            >
             <InputText
               id="apptoken"
               v-model="apptoken"
@@ -90,7 +112,11 @@
             />
           </div>
         </Fieldset>
-        <Button label="IR para 3" @click="Step3" class="mt-4" />
+        <Button
+          label="IR para 3"
+          @click="Step3"
+          class="mt-4"
+        />
       </Fieldset>
     </div>
   </div>

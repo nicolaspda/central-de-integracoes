@@ -28,7 +28,10 @@
           <div class="card flex justify-content-center pt-4">
             {{ userCard.content }}
           </div>
-          <Button :label="userCard.label" class="ml-5"></Button>
+          <Button
+            :label="userCard.label"
+            class="ml-5"
+          ></Button>
           <icon
             :class="
               userCard.status === 'on'
@@ -56,7 +59,10 @@
           <div class="card flex justify-content-center pt-4">
             {{ contactCard.content }}
           </div>
-          <Button :label="contactCard.label" class="ml-5"></Button>
+          <Button
+            :label="contactCard.label"
+            class="ml-5"
+          ></Button>
           <icon
             :class="
               contactCard.status === 'on'

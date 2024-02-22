@@ -1,5 +1,8 @@
 <template>
-  <Breadcrumb :home="home" :model="bread">
+  <Breadcrumb
+    :home="home"
+    :model="bread"
+  >
     <template #item="{ item }">
       <a
         v-if="selectedStep == item.action"
@@ -9,7 +12,11 @@
         <span :class="[item.icon, 'text-color']" />
         <span class="text-primary font-semibold">{{ item.label }} </span>
       </a>
-      <a v-else @click="Navigate(item)" class="hover:underline cursor-pointer">
+      <a
+        v-else
+        @click="Navigate(item)"
+        class="hover:underline cursor-pointer"
+      >
         <span :class="[item.icon, 'text-color']" />
         <span class="text-color font-semibold">{{ item.label }} </span>
       </a>

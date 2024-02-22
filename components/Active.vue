@@ -28,7 +28,12 @@
       <template #empty>Nenhuma integração encontrada.</template>
       <template #loading>Carregando integrações. Por favor, aguarde.</template>
       <!-- Coluna Nome -->
-      <Column field="name" sortable header="Nome" style="min-width: 12rem">
+      <Column
+        field="name"
+        sortable
+        header="Nome"
+        style="min-width: 12rem"
+      >
         {{ data.name }}
       </Column>
       <!-- Coluna Plataforma -->
@@ -39,28 +44,49 @@
         style="min-width: 12rem"
       >
         <template #body="{ data }"
-          ><img alt="teste" :src="data.img" style="width: 16px" />
+          ><img
+            alt="teste"
+            :src="data.img"
+            style="width: 16px"
+          />
           {{ data.plataform }}
         </template>
       </Column>
       <!-- Coluna Tipo -->
-      <Column field="type" header="Tipo" sortable>
+      <Column
+        field="type"
+        header="Tipo"
+        sortable
+      >
         <template #body="{ data }">
           {{ data.type }}
         </template>
       </Column>
       <!-- Coluna Data -->
-      <Column field="date" header="Data" sortable style="min-width: 12rem">
+      <Column
+        field="date"
+        header="Data"
+        sortable
+        style="min-width: 12rem"
+      >
         {{ data.date }}
       </Column>
       <!-- Coluna Status -->
-      <Column field="status" header="Status" style="min-width: 12rem">
+      <Column
+        field="status"
+        header="Status"
+        style="min-width: 12rem"
+      >
         <template #body="{ data }">
           <InputSwitch v-model="data.status" />
         </template>
       </Column>
       <!-- Coluna Configurações -->
-      <Column field="options" header="Config." style="min-width: 12rem">
+      <Column
+        field="options"
+        header="Config."
+        style="min-width: 12rem"
+      >
         <template #body="{ data }">
           <!-- Aqui tem que voltar a ficar ativo e no outro SpeeDial voltar a diretiva v-else
           <SpeedDial

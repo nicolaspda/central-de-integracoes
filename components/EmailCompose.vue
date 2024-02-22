@@ -39,7 +39,10 @@
   >
     <div class="card">
       <div class="title mb-3 w-max">
-        <Inplace :closable="true" class="text-2xl">
+        <Inplace
+          :closable="true"
+          class="text-2xl"
+        >
           <template #display>
             {{ text || "Nome do envio" }} <i class="ml-1 pi pi-pencil" />
           </template>
@@ -51,12 +54,19 @@
           </template>
         </Inplace>
       </div>
-      <Accordion expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
+      <Accordion
+        expandIcon="pi pi-plus"
+        collapseIcon="pi pi-minus"
+      >
         <!--Público-->
         <AccordionTab>
           <template #header>
             <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-users" shape="circle" class="bg-blue-100" />
+              <Avatar
+                icon="pi pi-users"
+                shape="circle"
+                class="bg-blue-100"
+              />
               <span class="font-bold white-space-nowrap">Público</span>
               <Avatar
                 icon="pi pi-exclamation-triangle"
@@ -81,7 +91,10 @@
                 class="w-full mt-2"
                 id="audience"
               ></Dropdown>
-              <Button rounded icon="pi pi-plus"></Button>
+              <Button
+                rounded
+                icon="pi pi-plus"
+              ></Button>
             </InputGroup>
           </div>
           <div class="mt-3 flex flex-wrap">
@@ -91,10 +104,16 @@
             ></Tags>
             <!-- Adicionar um componente de seleção de filtro/temperatura/etc-->
             <div class="mt-3">
-              <Checkbox v-model="checked" :binary="true" />
+              <Checkbox
+                v-model="checked"
+                :binary="true"
+              />
               &nbsp; <Strong>Não enviar </Strong> para um grupo específico de
               contatos
-              <Tags class="notToSend mt-3" v-if="checked"></Tags>
+              <Tags
+                class="notToSend mt-3"
+                v-if="checked"
+              ></Tags>
             </div>
           </div>
         </AccordionTab>
@@ -102,7 +121,11 @@
         <AccordionTab>
           <template #header>
             <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-at" shape="circle" class="bg-blue-100" />
+              <Avatar
+                icon="pi pi-at"
+                shape="circle"
+                class="bg-blue-100"
+              />
               <span class="font-bold white-space-nowrap">Remetente</span>
               <Avatar
                 icon="pi pi-check"
@@ -120,7 +143,11 @@
                 aria-describedby="sender"
               />
               <small id="sender">Ex: contato@seudominio.com.br </small>
-              <label for="senderName" class="mt-4">Nome do remetente</label>
+              <label
+                for="senderName"
+                class="mt-4"
+                >Nome do remetente</label
+              >
               <InputText
                 id="senderName"
                 v-model="senderName"
@@ -131,7 +158,10 @@
                 inbox do usuário.</small
               >
             </div>
-            <Divider layout="vertical" class="w-min" />
+            <Divider
+              layout="vertical"
+              class="w-min"
+            />
             <div
               style="
                 background-image: url('https://dl.dnzdns.com/v/MihH57ABF0410');
@@ -159,7 +189,11 @@
         <AccordionTab>
           <template #header>
             <span class="flex align-items-center gap-2 w-full">
-              <Avatar icon="pi pi-comment" shape="circle" class="bg-blue-100" />
+              <Avatar
+                icon="pi pi-comment"
+                shape="circle"
+                class="bg-blue-100"
+              />
               <span class="font-bold white-space-nowrap">Assunto</span>
               <Avatar
                 icon="pi pi-exclamation-triangle"
@@ -177,7 +211,10 @@
                   v-model="subject"
                   aria-describedby="subject"
                 />
-                <Button icon="pi pi-discord" v-tooltip.top="'Emoji'" />
+                <Button
+                  icon="pi pi-discord"
+                  v-tooltip.top="'Emoji'"
+                />
               </InputGroup>
               <label for="preheader">Pré-Header</label>
               <InputText
@@ -197,7 +234,10 @@
                 <SubjectGenerator></SubjectGenerator>
               </div>
             </div>
-            <Divider layout="vertical" class="w-min" />
+            <Divider
+              layout="vertical"
+              class="w-min"
+            />
             <div
               style="
                 background-image: url('https://dl.dnzdns.com/v/MihH57ABF0410');
@@ -267,7 +307,10 @@
                     </template>
                     <template #footer>
                       <div class="flex gap-3 mt-1">
-                        <Button :label="card.label" class="w-full" />
+                        <Button
+                          :label="card.label"
+                          class="w-full"
+                        />
                       </div>
                     </template>
                   </Card>
@@ -300,7 +343,10 @@
                     </template>
                     <template #footer>
                       <div class="flex gap-3 mt-1">
-                        <Button :label="card.label" class="w-full" />
+                        <Button
+                          :label="card.label"
+                          class="w-full"
+                        />
                       </div>
                     </template>
                   </Card>
@@ -373,7 +419,9 @@
                   </div>
                   <!--Divisor responsivo-->
                   <div class="w-full md:w-2">
-                    <Divider layout="vertical" class="hidden md:flex"
+                    <Divider
+                      layout="vertical"
+                      class="hidden md:flex"
                       ><b>-></b>
                     </Divider>
                     <Divider
@@ -381,7 +429,10 @@
                       class="flex md:hidden"
                       align="center"
                     >
-                      <i class="pi pi-arrow-down" style="font-size: 0.9rem"></i>
+                      <i
+                        class="pi pi-arrow-down"
+                        style="font-size: 0.9rem"
+                      ></i>
                     </Divider>
                   </div>
                   <!--OptOut -->
@@ -396,7 +447,9 @@
                             name="semConfirmacao"
                             value="semConfirmacao"
                           />
-                          <label for="ingredient1" class="ml-2"
+                          <label
+                            for="ingredient1"
+                            class="ml-2"
                             >Sem confirmação</label
                           >
                         </div>
@@ -407,7 +460,9 @@
                             name="confirmacao"
                             value="confirmacao"
                           />
-                          <label for="confirmacao" class="ml-2"
+                          <label
+                            for="confirmacao"
+                            class="ml-2"
                             >Com comfirmação</label
                           >
                         </div>
@@ -418,14 +473,20 @@
                             name="motivos"
                             value="motivos"
                           />
-                          <label for="motivos" class="ml-2">Com motivos</label>
+                          <label
+                            for="motivos"
+                            class="ml-2"
+                            >Com motivos</label
+                          >
                         </div>
                       </div>
                     </div>
                   </div>
                   <!--Divisor responsivo-->
                   <div class="w-full md:w-2">
-                    <Divider layout="vertical" class="hidden md:flex"
+                    <Divider
+                      layout="vertical"
+                      class="hidden md:flex"
                       ><b>-></b>
                     </Divider>
                     <Divider
@@ -433,7 +494,10 @@
                       class="flex md:hidden"
                       align="center"
                     >
-                      <i class="pi pi-arrow-down" style="font-size: 0.9rem"></i>
+                      <i
+                        class="pi pi-arrow-down"
+                        style="font-size: 0.9rem"
+                      ></i>
                     </Divider>
                   </div>
                   <!--Velocidade -->
@@ -458,7 +522,10 @@
                       size="large"
                       shape="circle"
                     />
-                    <Checkbox v-model="checkedGA" :binary="true" />
+                    <Checkbox
+                      v-model="checkedGA"
+                      :binary="true"
+                    />
                     &nbsp;Enviar dados ao Google Analytics
                   </div>
 
@@ -469,7 +536,10 @@
                       size="large"
                       shape="circle"
                     />
-                    <Checkbox v-model="checkedFB" :binary="true" />
+                    <Checkbox
+                      v-model="checkedFB"
+                      :binary="true"
+                    />
                     &nbsp;Postar disparo no Facebook
                   </div>
 
@@ -480,7 +550,10 @@
                       size="large"
                       shape="circle"
                     />
-                    <Checkbox v-model="checkedTW" :binary="true" />
+                    <Checkbox
+                      v-model="checkedTW"
+                      :binary="true"
+                    />
                     &nbsp; Postar disparo no Twitter (X)
                   </div>
                 </div>
@@ -507,7 +580,10 @@
                           aria-describedby="testEmail"
                           placeholder="seuemail@seudominio.com"
                         />
-                        <Button label="Testar envio" class="h-min"></Button>
+                        <Button
+                          label="Testar envio"
+                          class="h-min"
+                        ></Button>
                       </InputGroup>
                     </div>
                     <div class="choose">
@@ -533,7 +609,10 @@
                         class="calendar fadein animation-duration-100"
                         v-show="sendType == 'sendLater'"
                       >
-                        <label for="buttondisplay" class="block mb-2">
+                        <label
+                          for="buttondisplay"
+                          class="block mb-2"
+                        >
                           Para o dia
                         </label>
                         <Calendar
@@ -548,7 +627,10 @@
                     </div>
                   </div>
                   <!--Divisor-->
-                  <Divider layout="vertical" class="w-min" />
+                  <Divider
+                    layout="vertical"
+                    class="w-min"
+                  />
                   <div class="flex justify-content-center flex-wrap">
                     <div
                       class="totalAudience lg:w-8 flex justify-content-center"
@@ -562,7 +644,10 @@
                       <MeterGroup :value="provider" />
                     </div>
                     <div class="audienceLimit w-7 mt-5">
-                      <Checkbox v-model="checkedLimit" :binary="true" />
+                      <Checkbox
+                        v-model="checkedLimit"
+                        :binary="true"
+                      />
                       Limitar o público desse disparo?
                     </div>
                     <div class="realSend mt-5">

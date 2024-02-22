@@ -17,15 +17,24 @@
         >
           <!-- Valor da opção selecionada -->
           <template #value="{ value }">
-            <div v-if="value" class="flex align-items-center">
-              <img :src="value.img" style="width: 18px" />
+            <div
+              v-if="value"
+              class="flex align-items-center"
+            >
+              <img
+                :src="value.img"
+                style="width: 18px"
+              />
               <div>&nbsp; {{ value.platform }}</div>
             </div>
           </template>
           <!-- Valor da listagem -->
           <template #option="{ option }">
             <div class="flex align-items-center">
-              <img :src="option.img" style="width: 18px" />
+              <img
+                :src="option.img"
+                style="width: 18px"
+              />
               <div>&nbsp; {{ option.platform }}</div>
             </div>
           </template>
@@ -45,16 +54,30 @@
           <!-- Valor do título do grupo -->
           <template #optiongroup="slotProps">
             <div class="flex align-items-center">
-              <img :src="slotProps.option.img" style="width: 18px" />
+              <img
+                :src="slotProps.option.img"
+                style="width: 18px"
+              />
               <div>&nbsp; {{ slotProps.option.platform }}</div>
             </div>
           </template>
         </Dropdown>
       </div>
       <div class="w-full md:w-2">
-        <Divider layout="vertical" class="hidden md:flex"><b>-></b> </Divider>
-        <Divider layout="horizontal" class="flex md:hidden" align="center">
-          <i class="pi pi-arrow-down" style="font-size: 0.9rem"></i>
+        <Divider
+          layout="vertical"
+          class="hidden md:flex"
+          ><b>-></b>
+        </Divider>
+        <Divider
+          layout="horizontal"
+          class="flex md:hidden"
+          align="center"
+        >
+          <i
+            class="pi pi-arrow-down"
+            style="font-size: 0.9rem"
+          ></i>
         </Divider>
       </div>
       <div
@@ -62,7 +85,11 @@
       >
         <!-- Quarto componente -->
         Com a Dinamize:
-        <Dropdown disabled placeholder="Dinamize" class="w-full md:w-25rem">
+        <Dropdown
+          disabled
+          placeholder="Dinamize"
+          class="w-full md:w-25rem"
+        >
           <template #value>
             <img
               src="https://dl.dnzdns.com/v/IvFMc1ABF0473"
@@ -93,8 +120,15 @@
     <div
       class="flex justify-content-center align-items-center flex-wrap gap-3 mt-4"
     >
-      <Avatar :image="selectedPlatform.img" class="mr-1" size="xlarge" />
-      <i class="pi pi-plus" style="font-size: 1rem"></i>
+      <Avatar
+        :image="selectedPlatform.img"
+        class="mr-1"
+        size="xlarge"
+      />
+      <i
+        class="pi pi-plus"
+        style="font-size: 1rem"
+      ></i>
       <Avatar
         image="https://dl.dnzdns.com/v/IvFMc1ABF0473"
         class="mr-2"
@@ -110,7 +144,10 @@
   <!-- Passo 2 -->
   <div v-if="step2">
     <div class="card fadein animation-duration-200">
-      <Breadcrumb :home="home" :model="bread">
+      <Breadcrumb
+        :home="home"
+        :model="bread"
+      >
         <template #item="{ item }">
           <a
             v-if="selectedStep == item.action"
@@ -161,8 +198,15 @@
         </template>
         Relacione-os com os dados de {{ selectedPlatform.platform }}:
         <!-- Segundo componente -->
-        <DataTable rowHover class="mt-3" :value="selectedFields">
-          <Column field="dinaField" header="Campo da Dinamize">
+        <DataTable
+          rowHover
+          class="mt-3"
+          :value="selectedFields"
+        >
+          <Column
+            field="dinaField"
+            header="Campo da Dinamize"
+          >
             <template #body="slotProps">
               {{
                 slotProps.data.type == "Texto Simples"
@@ -182,9 +226,15 @@
               {{ slotProps.data.name }}
             </template>
           </Column>
-          <Column field="connect" class="text-left">
+          <Column
+            field="connect"
+            class="text-left"
+          >
             <template #body="connect">
-              <i class="pi pi-arrows-h" style="font-size: 16px"></i>
+              <i
+                class="pi pi-arrows-h"
+                style="font-size: 16px"
+              ></i>
             </template>
           </Column>
           <Column
@@ -223,7 +273,10 @@
   <!-- Passo 3 -->
   <div v-if="step3">
     <div class="card fadein animation-duration-200">
-      <Breadcrumb :home="home" :model="bread">
+      <Breadcrumb
+        :home="home"
+        :model="bread"
+      >
         <template #item="{ item }">
           <a
             v-if="selectedStep == item.action"
@@ -283,7 +336,11 @@
         </label>
         <div class="flex flex-wrap justify-content-left gap-3 mt-3">
           <InputGroup class="w-9">
-            <InputText id="url" disabled v-model="urlValue" />
+            <InputText
+              id="url"
+              disabled
+              v-model="urlValue"
+            />
             <Button
               icon="pi pi-copy"
               v-tooltip.focus.top="'URL Copiada!'"

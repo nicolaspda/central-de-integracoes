@@ -15,7 +15,10 @@
         <div class="fadein animation-duration-200">
           <h3>Através do método:</h3>
           <!-- Primeira Integração - Webhook -->
-          <Panel toggleable collapsed>
+          <Panel
+            toggleable
+            collapsed
+          >
             <template #header>
               <div class="flex align-items-center gap-2">
                 <Avatar
@@ -37,7 +40,11 @@
             <Webhook @sendIntegrations="active = 1" />
           </Panel>
           <!-- Segunda Integração - Nativa -->
-          <Panel toggleable collapsed class="mt-4">
+          <Panel
+            toggleable
+            collapsed
+            class="mt-4"
+          >
             <template #header>
               <div class="flex align-items-center gap-2">
                 <Avatar
@@ -58,10 +65,18 @@
             <Native />
           </Panel>
           <!-- Terceira Integração - Formulário -->
-          <Panel toggleable collapsed class="mt-4">
+          <Panel
+            toggleable
+            collapsed
+            class="mt-4"
+          >
             <template #header>
               <div class="flex align-items-center gap-2">
-                <Avatar icon="pi pi-book" shape="circle" class="bg-blue-100" />
+                <Avatar
+                  icon="pi pi-book"
+                  shape="circle"
+                  class="bg-blue-100"
+                />
                 <span class="font-bold">Integração via formulário </span>
                 <i
                   class="pi pi-question-circle"
@@ -75,7 +90,11 @@
             TAG
           </Panel>
           <!-- Quarta Integração - Captura de compra -->
-          <Panel toggleable collapsed class="mt-4">
+          <Panel
+            toggleable
+            collapsed
+            class="mt-4"
+          >
             <template #header>
               <div class="flex align-items-center gap-2">
                 <Avatar

@@ -11,7 +11,11 @@
       />
       <span class="p-text-secondary block mb-5">Acesse sua conta:</span>
       <div class="flex align-items-center gap-1 mb-3">
-        <label for="username" class="font-semibold w-6rem">Usuário</label>
+        <label
+          for="username"
+          class="font-semibold w-6rem"
+          >Usuário</label
+        >
         <div
           :class="inputFocusEmail === true ? animation : 'h-2rem'"
           style="width: 3px"
@@ -25,7 +29,12 @@
         />
       </div>
       <div class="flex align-items-center gap-1 mb-5">
-        <label for="password" class="font-semibold w-6rem"> Senha </label>
+        <label
+          for="password"
+          class="font-semibold w-6rem"
+        >
+          Senha
+        </label>
         <div
           :class="inputFocusPass === true ? animation : 'h-2rem'"
           style="width: 3px"
@@ -39,7 +48,9 @@
       </div>
       <div class="flex justify-content-between">
         <div>
-          <a href="https://www.dinamize.com.br/" class="text-xs"
+          <a
+            href="https://www.dinamize.com.br/"
+            class="text-xs"
             >Esqueci minha senha
           </a>
         </div>

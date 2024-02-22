@@ -6,7 +6,10 @@
       automação.
     </p>
     <div class="flex justify-content-end mb-6">
-      <Button label="Novo E-mail" @click="goEmail" />
+      <Button
+        label="Novo E-mail"
+        @click="goEmail"
+      />
     </div>
     <DataTable
       size="small"
@@ -73,9 +76,17 @@
       <template #empty>Nenhum envio encontrado.</template>
       <template #loading>Carregando informações. Por favor, aguarde.</template>
       <!-- Checkbox de seleção -->
-      <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
+      <Column
+        selectionMode="multiple"
+        headerStyle="width: 3rem"
+      ></Column>
       <!-- Coluna Nome do envio-->
-      <Column field="title" sortable header="Envio" style="min-width: 12rem">
+      <Column
+        field="title"
+        sortable
+        header="Envio"
+        style="min-width: 12rem"
+      >
       </Column>
       <!-- Coluna Campanha do envio-->
       <Column
@@ -86,7 +97,12 @@
       >
       </Column>
       <!-- Coluna Status -->
-      <Column field="status" sortable header="Status" style="min-width: 12rem">
+      <Column
+        field="status"
+        sortable
+        header="Status"
+        style="min-width: 12rem"
+      >
         <template #body="{ data }"
           ><Tag
             :icon="
@@ -120,7 +136,12 @@
         </template>
       </Column>
       <!-- Coluna Data -->
-      <Column field="date" header="Data" sortable style="min-width: 12rem">
+      <Column
+        field="date"
+        header="Data"
+        sortable
+        style="min-width: 12rem"
+      >
         {{ data.date }}
       </Column>
       <!-- Coluna Público -->
@@ -141,7 +162,12 @@
         </template>
       </Column>
       <!-- Coluna Abertura -->
-      <Column field="view" header="Abertura" sortable style="min-width: 12rem">
+      <Column
+        field="view"
+        header="Abertura"
+        sortable
+        style="min-width: 12rem"
+      >
         <template #body="{ data }">
           <Knob
             readonly
@@ -154,7 +180,12 @@
         </template>
       </Column>
       <!-- Coluna Clique -->
-      <Column field="click" header="Clique" sortable style="min-width: 12rem">
+      <Column
+        field="click"
+        header="Clique"
+        sortable
+        style="min-width: 12rem"
+      >
         <template #body="{ data }">
           <Knob
             v-model="data.click"
@@ -167,7 +198,11 @@
         </template>
       </Column>
       <!-- Coluna Configurações -->
-      <Column field="options" header="Config." style="min-width: 12rem">
+      <Column
+        field="options"
+        header="Config."
+        style="min-width: 12rem"
+      >
         <template #body="{ data }">
           <SpeedDial
             v-if="data.type == 'Instantânea'"

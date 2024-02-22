@@ -37,7 +37,12 @@
             </span>
           </a>
         </NuxtLink>
-        <a v-else v-ripple :target="item.target" v-bind="props.action">
+        <a
+          v-else
+          v-ripple
+          :target="item.target"
+          v-bind="props.action"
+        >
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
           <i
