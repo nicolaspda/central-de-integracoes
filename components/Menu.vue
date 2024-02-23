@@ -221,6 +221,12 @@ export default {
               route: "/Journey",
             },
             {
+              label: "Consumo",
+              icon: "pi pi-dollar",
+              shortcut: "⌘+U",
+              route: "/Journey",
+            },
+            {
               separator: true,
             },
           ],

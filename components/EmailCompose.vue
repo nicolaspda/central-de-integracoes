@@ -637,7 +637,7 @@
                     >
                       <h3>
                         Público total:
-                        <span class="text-3xl"> 1254 </span>
+                        <span class="text-3xl"> {{ totalAudience }} </span>
                       </h3>
                     </div>
                     <div class="audienceProvider">
@@ -649,6 +649,13 @@
                         :binary="true"
                       />
                       Limitar o público desse disparo?
+                      <Slider
+                        v-if="checkedLimit == true"
+                        v-model.number="totalAudience"
+                        :max="maxAudience"
+                        :min="200"
+                        class="w-14rem mt-4"
+                      />
                     </div>
                     <div class="realSend mt-5">
                       <!--Confirmação do envio ou agendamento-->
@@ -696,6 +703,8 @@ export default {
       selectedAudience: "Todos os contatos",
       text: null,
       pontualStep: false,
+      totalAudience: 1254,
+      maxAudience: 1254,
       cards: [
         {
           title: "Envio Pontual",
