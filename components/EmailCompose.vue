@@ -637,7 +637,11 @@
                     >
                       <h3>
                         Público total:
-                        <span class="text-3xl"> {{ totalAudience }} </span>
+                        <span class="text-3xl">
+                          {{
+                            checkedLimit == true ? totalAudience : maxAudience
+                          }}
+                        </span>
                       </h3>
                     </div>
                     <div class="audienceProvider">
