@@ -89,7 +89,7 @@
             </template>
             <FormType />
           </Panel>
-          <!-- Quarta Integração - Captura de compra -->
+          <!-- Quarta Integração - Captura de compra/Recursos para E-commerce -->
           <Panel
             toggleable
             collapsed
@@ -107,6 +107,31 @@
                   class="pi pi-question-circle"
                   v-tooltip="
                     'Integrações específicas para E-commerce. Ex: Capturar dados de compra'
+                  "
+                  style="font-size: 1rem"
+                ></i>
+              </div>
+            </template>
+            <Ecommerce />
+          </Panel>
+          <!-- Quinta Integração - Lead tracking -->
+          <Panel
+            toggleable
+            collapsed
+            class="mt-4"
+          >
+            <template #header>
+              <div class="flex align-items-center gap-2">
+                <Avatar
+                  icon="pi pi-flag"
+                  shape="circle"
+                  class="bg-blue-100"
+                />
+                <span class="font-bold">Lead tracking </span>
+                <i
+                  class="pi pi-question-circle"
+                  v-tooltip="
+                    'Identificação e rastreamento da navegação do Lead'
                   "
                   style="font-size: 1rem"
                 ></i>
