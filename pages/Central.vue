@@ -87,7 +87,7 @@
                 ></i>
               </div>
             </template>
-            TAG
+            <FormType />
           </Panel>
           <!-- Quarta Integração - Captura de compra -->
           <Panel
@@ -102,7 +102,7 @@
                   shape="circle"
                   class="bg-blue-100"
                 />
-                <span class="font-bold">Integrações para E-commerce </span>
+                <span class="font-bold">Recursos para E-commerce </span>
                 <i
                   class="pi pi-question-circle"
                   v-tooltip="
