@@ -40,8 +40,8 @@
           </label>
         </div>
       </TabPanel>
-      <TabPanel header="Envios de e-mail">
-        <div class="fadein animation-duration-200">teste2</div>
+      <TabPanel header="E-mails personalizados">
+        <div class="fadein animation-duration-200">XML de produtos</div>
       </TabPanel>
       <Toast />
     </TabView>

@@ -137,7 +137,7 @@
                 ></i>
               </div>
             </template>
-            TAG
+            <LeadTracking />
           </Panel>
         </div>
       </TabPanel>
