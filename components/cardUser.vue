@@ -13,11 +13,11 @@
         </SelectButton>
       </div>
       <div
+        class="h-7rem w-full bg-no-repeat bg-center border-round border-1 border-300"
         style="
           background-image: url('https://primefaces.org/cdn/primevue/images/usercard.png');
           width: 400px;
         "
-        class="h-7rem w-full bg-no-repeat bg-center border-round border-1 border-300"
       >
         <div class="flex justify-content-center">
           <Avatar
@@ -32,12 +32,17 @@
     <template #title>Fulano de Tal</template>
     <template #subtitle>Quente 🔥</template>
     <template #content>
-      <p class="m-0">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
-        consequuntur error repudiandae numquam deserunt quisquam repellat libero
-        asperiores earum nam nobis, culpa ratione quam perferendis esse,
-        cupiditate neque qu
-      </p>
+      <div class="flex justify-content-around gap-3">
+        <div class="h-5rem w-full bg-cyan-100">TESTE</div>
+        <div class="h-5rem w-full bg-cyan-100">TESTE</div>
+      </div>
+      <h5 class="mt-1 mb-2">Tags</h5>
+      <div class="flex flex-wrap gap-1">
+        <Chip label="Action" />
+        <Chip label="Comedy" />
+        <Chip label="Mystery" />
+        <Chip label="Thriller" />
+      </div>
     </template>
     <template #footer>
       <div class="flex gap-3 mt-1 justify-content-end">
