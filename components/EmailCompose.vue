@@ -137,10 +137,10 @@
           <div class="flex justify-content-between">
             <div class="flex flex-column gap-2">
               <label for="senderEmail">E-mail do remetente</label>
-              <InputText
-                id="senderEmail"
+              <Dropdown
                 v-model="senderEmail"
-                aria-describedby="sender"
+                editable
+                :options="senders"
               />
               <small id="sender">Ex: contato@seudominio.com.br </small>
               <label
@@ -709,6 +709,11 @@ export default {
       pontualStep: false,
       totalAudience: 1254,
       maxAudience: 1254,
+      senders: [
+        "contato@dinamize.com",
+        "marketing@dinamize.com",
+        "dinamize@dinamize.com",
+      ],
       cards: [
         {
           title: "Envio Pontual",
