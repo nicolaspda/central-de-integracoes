@@ -1,10 +1,9 @@
 <template>
-  <!-- <Menu />
+  <Menu />
   <img
     class="mt-1"
     src="https://i.postimg.cc/gkL7SwLP/final-dash.png"
-  />-->
-  <CardUser />
+  />
 </template>
 
 <script>

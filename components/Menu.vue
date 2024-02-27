@@ -145,7 +145,7 @@ export default {
               label: "Contatos",
               icon: "pi pi-users",
               shortcut: "⌘+S",
-              route: "/Journey",
+              route: "/ManageContacts",
             },
             {
               label: "Tags",
