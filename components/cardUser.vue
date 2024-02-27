@@ -127,7 +127,7 @@
       <div
         class="flex align-items-center justify-content-center flex-wrap gap-3 mb-3 mt-4"
       >
-        Histórico
+        <History />
       </div>
     </template>
     <!--Rodapé-->
