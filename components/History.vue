@@ -24,9 +24,7 @@
           <template #content>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Inventore sed consequuntur error repudiandae numquam deserunt
-              quisquam repellat libero asperiores earum nam nobis, culpa ratione
-              quam perferendis esse, cupiditate neque quas!
+              Inventore sed!
             </p>
             <Button
               label="Read more"
@@ -45,13 +43,13 @@ export default {
     return {
       events: [
         {
-          status: "Ordered",
+          status: "E-mail entregue",
           date: "15/10/2020 10:30",
-          icon: "pi pi-shopping-cart",
+          icon: "pi pi-send",
           color: "#9C27B0",
         },
         {
-          status: "Processing",
+          status: "Participou de envio",
           date: "15/10/2020 14:00",
           icon: "pi pi-cog",
           color: "#673AB7",
