@@ -1,66 +1,71 @@
 <template>
-  <div class="flex">
+  <!--Menu flutuante-->
+  <div
+    class="card z-5 shadow-2 ml-7 mt-4 w-min h-min absolute scalein animation-duration-100"
+    v-if="floatMenu"
+    @mouseleave="floatMenu = false"
+  >
     <div
-      class="w-5rem h-screen border-round left-0 flex flex-column gap-4 z-1"
+      v-for="btn in filteredMenu"
+      :key="btn"
+      class="mt-4 animation-duration-100 fadein"
+    >
+      <div
+        class="card flex align-items-center gap-3 hover:surface-100 border-round transition-all transition-duration-100 h-1rem cursor-pointer shadow-1"
+        v-for="item in btn.items"
+      >
+        <i :class="item.icon"></i>
+        {{ item.label }}
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <!--Menu lateral (drawer)-->
+    <div
+      :class="
+        panel
+          ? 'w-5rem h-screen border-round flex flex-column gap-4 z-1 transition-all transition-duration-300 shadow-1'
+          : 'w-15rem h-screen border-round flex flex-column gap-4 z-1 transition-all transition-duration-300 shadow-2'
+      "
       style="background: #eaf1fb"
     >
       <div class="pt-2"></div>
       <!--Topo reservado-->
-      <div class="cont mb-2 mt-3">
+      <div class="topo">
         <div
-          class="hover:surface-300 h-3rem border-circle flex justify-content-center align-items-center ml-3 mr-3 transition-all transition-duration-300 cursor-pointer"
+          class="hover:surface-300 w-3rem h-3rem border-circle flex justify-content-center align-items-center ml-2 mr-2 transition-all transition-duration-300 cursor-pointer"
           @click="panelAction"
+          v-tooltip="panel ? 'Expandir' : 'Reduzir'"
         >
-          <i
-            class="pi pi-bars"
-            style="font-size: 16px"
-          ></i>
+          <i class="pi pi-bars"></i>
         </div>
       </div>
       <!--Ícones-->
       <div
-        class="cont flex flex-column gap-1 justify-content-center align-items-center hover:surface-300 border-round transition-all transition-duration-300 cursor-pointer mr-2 ml-2"
+        class="icons flex align-items-center hover:surface-300 border-round-md transition-all transition-duration-200 cursor-pointer ml-4 mr-4 h-2rem"
         v-for="menu in menus"
         :key="menu"
-        @click="selectedMenu = menu.label"
+        @click="goMenu(menu.label)"
+        v-tooltip="panel ? menu.label : ''"
       >
-        <i
-          :class="menu.class"
-          style="font-size: 16px"
-          v-badge.danger
-        >
-        </i>
-        <span style="font-size: 11px"> {{ menu.label }} </span>
-      </div>
-    </div>
-    <!--Menu expandido-->
-    <div
-      :class="
-        panel
-          ? 'card w-2 h-screen animation-duration-200 fadeinleft z-0'
-          : 'card hidden h-screen z-0'
-      "
-    >
-      <div
-        v-for="btn in filteredMenu"
-        :key="btn"
-        class="mt-7 animation-duration-100 fadein"
-      >
-        <div
-          class="card flex align-items-center gap-3 hover:surface-100 border-round transition-all transition-duration-100 h-1rem cursor-pointer shadow-1"
-          v-for="item in btn.items"
-        >
-          <i :class="item.icon"></i>
-          {{ item.label }}
+        <div class="flex gap-4">
+          <i
+            :class="menu.class"
+            style="font-size: 16px"
+            v-badge.danger
+          >
+          </i>
+          <span
+            v-if="!panel"
+            class="fadein animation-duration-800"
+            >{{ menu.label }}</span
+          >
         </div>
       </div>
     </div>
-    <!--Painel principal-->
 
-    <div
-      class="card h-screen w-full"
-      style="background: #eaf1fb"
-    >
+    <!--Painel principal-->
+    <div class="card h-screen w-full">
       <div class="ml-0 gap-3 pt-3">
         <img
           src="https://i.postimg.cc/DyWW65wL/dina-logo.png"
@@ -69,7 +74,9 @@
         />
       </div>
       <h4>Olá, Nicolas!</h4>
-      <div class="card w-full h-screen ml-0 mt-4 bg-white">Conteúdo</div>
+      <div class="card w-full h-screen ml-0 mt-4 bg-white">
+        {{ selectedMenu }}
+      </div>
     </div>
   </div>
 </template>
@@ -78,6 +85,7 @@
 export default {
   data() {
     return {
+      floatMenu: false,
       value: null,
       panel: false,
       selectedMenu: "Dashboard",
@@ -105,19 +113,16 @@ export default {
             {
               label: "Pop-up",
               icon: "pi pi-id-card",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "WhatsApp",
               icon: "pi pi-whatsapp",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "SMS",
               icon: "pi pi-mobile",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
@@ -134,37 +139,31 @@ export default {
             {
               label: "Contatos",
               icon: "pi pi-users",
-              shortcut: "⌘+S",
               route: "/ManageContacts",
             },
             {
               label: "Tags",
               icon: "pi pi-tags",
-              shortcut: "⌘+B",
               route: "/Journey",
             },
             {
               label: "Filtros",
               icon: "pi pi-filter",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "Campanhas",
               icon: "pi pi-megaphone",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "Lead Score",
               icon: "pi pi-sort-numeric-up-alt",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "Galeria de imagens",
               icon: "pi pi-image",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
           ],
@@ -182,37 +181,31 @@ export default {
             {
               label: "Envios",
               icon: "pi pi-send",
-              shortcut: "⌘+S",
               route: "/Journey",
             },
             {
               label: "Analytics",
               icon: "pi pi-chart-bar",
-              shortcut: "⌘+B",
               route: "/Journey",
             },
             {
               label: "Landing pages",
               icon: "pi pi-desktop",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "SMS",
               icon: "pi pi-mobile",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "SEO",
               icon: "pi pi-google",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "Consumo",
               icon: "pi pi-dollar",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
           ],
@@ -230,25 +223,21 @@ export default {
             {
               label: "Domínios",
               icon: "pi pi-globe",
-              shortcut: "⌘+S",
               route: "/Journey",
             },
             {
               label: "Analytics",
               icon: "pi pi-chart-bar",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
             {
               label: "URL amigável",
               icon: "pi pi-verified",
-              shortcut: "⌘+B",
               route: "/Journey",
             },
             {
               label: "Script da Dinamize",
               icon: "pi pi-code",
-              shortcut: "⌘+U",
               route: "/Journey",
             },
           ],
@@ -264,6 +253,18 @@ export default {
   methods: {
     panelAction() {
       this.panel = !this.panel;
+    },
+    goMenu(menuName) {
+      this.selectedMenu = menuName;
+      if (this.filteredMenu.some((menu) => menu.items)) {
+        this.floatMenu = true;
+        console.log("tem item");
+      } else {
+        this.floatMenu = false;
+      }
+    },
+    hideMenu() {
+      this.floatMenu = true;
     },
   },
   computed: {

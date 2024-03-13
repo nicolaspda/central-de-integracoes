@@ -1,10 +1,11 @@
 <template>
+  <!--
   <Menu />
   <img
     class="mt-1"
     src="https://i.postimg.cc/gkL7SwLP/final-dash.png"
-  />
-  <!--<NewMenu />-->
+  />-->
+  <NewMenu2 />
 </template>
 
 <script>
