@@ -1,7 +1,7 @@
 <template>
   <!--Menu flutuante-->
   <div
-    class="card z-5 shadow-2 ml-7 mt-4 w-min h-min absolute scalein animation-duration-100"
+    class="card z-5 shadow-2 ml-7 mt-4 w-min absolute scalein animation-duration-100"
     v-if="floatMenu"
     @mouseleave="floatMenu = false"
   >
@@ -74,7 +74,7 @@
         />
       </div>
       <h4>Olá, Nicolas!</h4>
-      <div class="card w-full h-screen ml-0 mt-4 bg-white">
+      <div class="card w-full h-auto ml-0 mt-4 bg-white">
         {{ selectedMenu }}
       </div>
     </div>
