@@ -1,5 +1,5 @@
 <template>
-  <Menu />
+  <NavMenu />
   <div class="card">
     <!-- Título -->
     <h2>
