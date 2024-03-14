@@ -29,17 +29,17 @@
         v-tooltip="panel ? menu.label : ''"
       >
         <div class="flex gap-4">
-          <i
-            :class="menu.class"
+          <span
+            :class="menu.icon"
             style="font-size: 16px"
             v-badge.danger
           >
-          </i>
+          </span>
           <span
             v-if="!panel"
             class="fadein animation-duration-800"
-            >{{ menu.label }}</span
-          >
+            >{{ menu.label }}
+          </span>
         </div>
       </div>
       <!--Menu flutuante-->
@@ -50,7 +50,11 @@
           :model="filteredMenu"
           :popup="true"
           :class="popup ? '' : 'hidden'"
-        />
+        >
+          <template #submenuheader="{ item }">
+            <span class="text-primary font-bold"> {{ item.label }}</span>
+          </template>
+        </Menu>
       </div>
     </div>
 
@@ -81,12 +85,12 @@ export default {
       menus: [
         {
           label: "Dashboard",
-          class: "pi pi-home",
+          icon: "pi pi-home",
           route: "/Dash",
         },
         {
           label: "Criar",
-          class: "pi pi-bolt",
+          icon: "pi pi-bolt",
           route: "/Dash",
           items: [
             {
@@ -122,7 +126,7 @@ export default {
         },
         {
           label: "Gerenciar",
-          class: "pi pi-wrench",
+          icon: "pi pi-wrench",
           route: "/Dash",
           items: [
             {
@@ -159,12 +163,12 @@ export default {
         },
         {
           label: "Automatizar",
-          class: "pi pi-forward",
+          icon: "pi pi-forward",
           route: "/Dash",
         },
         {
           label: "Analisar",
-          class: "pi pi-chart-line",
+          icon: "pi pi-chart-line",
           route: "/Dash",
           items: [
             {
@@ -201,12 +205,12 @@ export default {
         },
         {
           label: "Integrar",
-          class: "pi pi-sync",
+          icon: "pi pi-sync",
           route: "/Dash",
         },
         {
           label: "Configurar",
-          class: "pi pi-cog",
+          icon: "pi pi-cog",
           route: "/Dash",
           items: [
             {
@@ -233,7 +237,7 @@ export default {
         },
         {
           label: "Jornadas",
-          class: "pi pi-truck",
+          icon: "pi pi-truck",
           route: "/Dash",
         },
       ],
