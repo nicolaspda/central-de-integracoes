@@ -21,27 +21,16 @@
         </div>
       </div>
       <!--Ícones-->
-      <div
-        class="icons flex align-items-center hover:surface-300 border-round-md transition-all transition-duration-200 cursor-pointer ml-4 mr-4 h-2rem"
-        v-for="menu in menus"
-        :key="menu"
-        @click="toggle($event, menu)"
-        v-tooltip="panel ? menu.label : ''"
-      >
-        <div class="flex gap-4">
-          <span
-            :class="menu.icon"
-            style="font-size: 16px"
-            v-badge.danger
-          >
-          </span>
-          <span
-            v-if="!panel"
-            class="fadein animation-duration-800"
-            >{{ menu.label }}
-          </span>
-        </div>
-      </div>
+          <Button 
+          v-for="menu in menus"
+          :key="menu"
+          text 
+          :label="!panel ? menu.label : '' " 
+          :icon="menu.icon" 
+          class="icons mx-3 hover:surface-300 text-color text-left" 
+          @click="toggle($event, menu)"
+          v-tooltip="panel ? menu.label : ''"  
+          />
       <!--Menu flutuante-->
       <div>
         <Menu
