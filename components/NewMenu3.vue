@@ -21,16 +21,16 @@
         </div>
       </div>
       <!--Ícones-->
-          <Button 
-          v-for="menu in menus"
-          :key="menu"
-          text 
-          :label="!panel ? menu.label : '' " 
-          :icon="menu.icon" 
-          class="icons mx-3 hover:surface-300 text-color text-left" 
-          @click="toggle($event, menu)"
-          v-tooltip="panel ? menu.label : ''"  
-          />
+      <Button
+        v-for="menu in menus"
+        :key="menu"
+        text
+        :label="!panel ? menu.label : ''"
+        :icon="menu.icon"
+        class="icons mx-3 px-3 hover:surface-300 text-color text-left"
+        @click="toggle($event, menu)"
+        v-tooltip="panel ? menu.label : ''"
+      />
       <!--Menu flutuante-->
       <div>
         <Menu
